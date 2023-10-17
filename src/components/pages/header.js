@@ -1,7 +1,7 @@
 import React from 'react';
 
 import logoImg from '../images/logo192.png'
-import ShopButton from '../UI/button/button'
+import ContinueButton from '../UI/button/button'
 
 function Header() {
   return (
@@ -10,7 +10,7 @@ function Header() {
         <img src={logoImg} alt='Logo' className='h-12 mr-2.5' />
         <h1>tulip</h1>
       </div>
-      <ShopButton />
+      <ContinueButton />
     </header>
   );
 

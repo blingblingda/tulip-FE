@@ -11,22 +11,35 @@ html {
 }
 
 /* Button style  */
-.btn::before {
-  content: "";
-  position: absolute;
-  width: 100px;
-  height: 120%;
-  background-color: #ff6700;
-  top: 50%;
-  transform: skewX(30deg) translate(-150%, -50%);
-  transition: all 0.5s;
+button {
+  color: black;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: Helvetica, "sans-serif";
+  transition: all .2s;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #f8f8f8;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
 }
 
-.btn:hover::before {
-  transform: skewX(30deg) translate(150%, -50%);
-  transition-delay: 0.1s;
+button:hover {
+  background: #33daec;
 }
 
-.btn:hover {
-  box-shadow: 0 2px 0 2px #0d3b66;
+button > svg {
+  width: 28px;
+  margin-left: 10px;
+  transition: transform .3s ease-in-out;
+}
+
+button:hover svg {
+  transform: translateX(5px);
+}
+
+button:active {
+  transform: scale(0.95);
 }
