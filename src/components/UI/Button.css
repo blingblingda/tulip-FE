@@ -1,0 +1,33 @@
+/* Button style  */
+button {
+  color: black;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: Helvetica, "sans-serif";
+  transition: all 0.2s;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: #f8f8f8;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+button:hover {
+  background: #33daec;
+}
+
+button > svg {
+  width: 28px;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover svg {
+  transform: translateX(5px);
+}
+
+button:active {
+  transform: scale(0.95);
+}

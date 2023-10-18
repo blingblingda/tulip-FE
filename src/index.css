@@ -2,44 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Young+Serif&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Young+Serif&display=swap");
 
 html {
-  font-family: 'PT Serif', serif;
-  font-family: 'Young Serif', serif;
-}
-
-/* Button style  */
-button {
-  color: black;
-  cursor: pointer;
-  font-weight: 800;
-  font-family: Helvetica, "sans-serif";
-  transition: all .2s;
-  padding: 10px 20px;
-  border-radius: 10px;
-  background: #f8f8f8;
-  border: 1px solid transparent;
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-}
-
-button:hover {
-  background: #33daec;
-}
-
-button > svg {
-  width: 28px;
-  margin-left: 10px;
-  transition: transform .3s ease-in-out;
-}
-
-button:hover svg {
-  transform: translateX(5px);
-}
-
-button:active {
-  transform: scale(0.95);
+  font-family: "PT Serif", serif;
+  font-family: "Young Serif", serif;
 }
