@@ -373,7 +373,7 @@ export default function HomePage() {
           </div>
         </section>
         <section className="flex flex-col items-center mt-10">
-          <p className="text-4xl pb-5">Download for mobile</p>
+          <p className="text-4xl pb-5 text-center">Download for mobile</p>
           <Button />
         </section>
       </main>
