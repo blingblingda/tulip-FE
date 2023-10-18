@@ -4,7 +4,21 @@
 
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Young+Serif&display=swap");
 
+:root {
+  --plum: #7c0c34;
+  --magenta: #b80d54;
+  --hotmag: #ff309d;
+  --lightpink: #fe66c5;
+  --aqua: #86fbfb;
+  --white: #f7f8fa;
+  --black: #171321;
+  --font-size: 1.3rem;
+  --mono: "Oxygen mono", monospace;
+  --sans: Oxygen, sans-serif;
+}
+
 html {
+  /* box-sizing: border-box; */
   font-family: "PT Serif", serif;
   font-family: "Young Serif", serif;
 }

@@ -1,33 +1,79 @@
-/* Button style  */
-button {
-  color: black;
-  cursor: pointer;
-  font-weight: 800;
-  font-family: Helvetica, "sans-serif";
-  transition: all 0.2s;
-  padding: 10px 20px;
-  border-radius: 10px;
-  background: #f8f8f8;
-  border: 1px solid transparent;
+.button {
   display: flex;
+  justify-content: center;
   align-items: center;
-  font-size: 15px;
+  padding: 9px 12px;
+  gap: 8px;
+  height: 40px;
+  width: 120px;
+  border: none;
+  background: var(--magenta);
+  border-radius: 20px;
+  cursor: pointer;
 }
 
-button:hover {
-  background: #33daec;
+.lable {
+  line-height: 22px;
+  font-size: 17px;
+  color: #fff;
+  font-family: sans-serif;
+  letter-spacing: 1px;
 }
 
-button > svg {
-  width: 28px;
-  margin-left: 10px;
-  transition: transform 0.3s ease-in-out;
+.button:hover {
+  background: var(--plum);
 }
 
-button:hover svg {
-  transform: translateX(5px);
+.button:hover .svg-icon {
+  animation: flickering 2s linear infinite;
 }
 
-button:active {
-  transform: scale(0.95);
+@keyframes flickering {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  52% {
+    opacity: 1;
+  }
+
+  54% {
+    opacity: 0;
+  }
+
+  56% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 0;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0;
+  }
+
+  98% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
