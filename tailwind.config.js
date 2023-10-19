@@ -26,7 +26,19 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        custom: {
+          plum: "#7c0c34",
+          magenta: "#b80d54",
+          hotmag: "#ff309d",
+          lightpink: "#fe66c5",
+          aqua: "#86fbfb",
+          white: "#f7f8fa",
+          black: "#171321",
+        },
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };

@@ -7,17 +7,21 @@ import Footer from "../../UI/Footer";
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto p-4">
+    <div>
       <Header />
-      <main className="container mx-auto">
-        <section className="flex justify-around mt-6">
-          <div className="w-1/6" style={{ transform: "rotate(-10deg)" }}>
-            <img src={ScreenShot} alt="home page screen shot" />
-          </div>
-          <div className="flex flex-col justify-start items-center">
-            <div className="text-6xl">tulip</div>
-            <p className="text-lg">Where connections blossom</p>
-            <Button />
+      <main className="mx-auto">
+        <section className="hero min-h-100 bg-base-200">
+          <div className="hero-content flex-col lg:flex-row">
+            <img
+              src={ScreenShot}
+              className="max-w-sm rounded-lg shadow-2xl"
+              alt="screenshot"
+            />
+            <div>
+              <h1 className="text-8xl font-bold">tulip</h1>
+              <p className="py-6">Where connections blossom.</p>
+              <Button />
+            </div>
           </div>
         </section>
         <section className="flex flex-col items-center mt-10">
