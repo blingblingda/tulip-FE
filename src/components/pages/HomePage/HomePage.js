@@ -1,383 +1,333 @@
 import React from "react";
 import Header from "../../UI/Header";
 import ScreenShot from "../../../assets/screenShot.png";
-import Feature from "../../../assets/feature-1.jpeg";
+import Intro1 from "../../../assets/intro-1.avif";
 import Button from "../../UI/Button";
 import Footer from "../../UI/Footer";
+import DownloadBtn from "./DownloadBtn";
+
+import { Collapse, initTE } from "tw-elements";
+
+initTE({ Collapse });
 
 export default function HomePage() {
   return (
     <div>
       <Header />
       <main className="mx-auto">
+        {/* Hero */}
         <section className="hero min-h-100 bg-base-200">
           <div className="hero-content flex-col lg:flex-row">
             <img
               src={ScreenShot}
-              className="max-w-sm rounded-lg shadow-2xl"
+              className="lg:w-80 md:w-32 rounded-lg shadow-2xl"
               alt="screenshot"
             />
             <div>
-              <h1 className="text-8xl font-bold text-white">tulip</h1>
+              <h1 className="text-8xl font-bold text-black">tulip</h1>
               <p className="py-6">Where connections blossom.</p>
               <Button />
             </div>
           </div>
         </section>
-        <section className="flex flex-col items-center mt-10">
-          <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <img
-              class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-              src={Feature}
-              alt=""
-            />
-            <div class="flex flex-col justify-between p-4 leading-normal">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Make meaningful, lasting connections
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Focusing on limiting distractions and encouraging truthfulness
-                and honesty.
-              </p>
-            </div>
+        {/* Why tulip */}
+        <section>
+          <div className="flex justify-center text-5xl py-20">
+            <h2>Why tulip</h2>
           </div>
-          <div class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-            <div class="flex flex-col justify-between p-4 leading-normal">
-              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Focus on 1 connection at a time
-              </h5>
-              <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                Give your time to someone who chooses only you. Nurture love and
-                care from the first text.
-              </p>
-            </div>
-            <img
-              class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-              src={Feature}
-              alt=""
-            />
-          </div>
-        </section>
-        <section className="flex flex-col items-center mt-10">
-          <h2 className="text-4xl pb-5">Reviews</h2>
-          <div class="grid mb-8 border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 md:mb-12 md:grid-cols-2">
-            <figure class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-t-lg md:rounded-t-none md:rounded-tl-lg md:border-r dark:bg-gray-800 dark:border-gray-700">
-              <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                  Very easy this was to integrate
-                </h3>
-                <p class="my-4">
-                  If you care for your time, I hands down would go with this."
-                </p>
-              </blockquote>
-              <figcaption class="flex items-center justify-center space-x-3">
-                <img
-                  class="rounded-full w-9 h-9"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
-                  alt="avatar"
-                />
-                <div class="space-y-0.5 font-medium dark:text-white text-left">
-                  <div>Bonnie Green</div>
-                  <div class="text-sm text-gray-500 dark:text-gray-400">
-                    Developer at Open AI
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-            <figure class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-tr-lg dark:bg-gray-800 dark:border-gray-700">
-              <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                  Solid foundation for any project
-                </h3>
-                <p class="my-4">
-                  Designing with Figma components that can be easily translated
-                  to the utility classes of Tailwind CSS is a huge timesaver!"
-                </p>
-              </blockquote>
-              <figcaption class="flex items-center justify-center space-x-3">
-                <img
-                  class="rounded-full w-9 h-9"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/roberta-casas.png"
-                  alt="avatar"
-                />
-                <div class="space-y-0.5 font-medium dark:text-white text-left">
-                  <div>Roberta Casas</div>
-                  <div class="text-sm text-gray-500 dark:text-gray-400">
-                    Lead designer at Dropbox
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-            <figure class="flex flex-col items-center justify-center p-8 text-center bg-white border-b border-gray-200 rounded-bl-lg md:border-b-0 md:border-r dark:bg-gray-800 dark:border-gray-700">
-              <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                  Mindblowing workflow
-                </h3>
-                <p class="my-4">
-                  Aesthetically, the well designed components are beautiful and
-                  will undoubtedly level up your next application."
-                </p>
-              </blockquote>
-              <figcaption class="flex items-center justify-center space-x-3">
-                <img
-                  class="rounded-full w-9 h-9"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/jese-leos.png"
-                  alt="avatar"
-                />
-                <div class="space-y-0.5 font-medium dark:text-white text-left">
-                  <div>Jese Leos</div>
-                  <div class="text-sm text-gray-500 dark:text-gray-400">
-                    Software Engineer at Facebook
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-            <figure class="flex flex-col items-center justify-center p-8 text-center bg-white border-gray-200 rounded-b-lg md:rounded-br-lg dark:bg-gray-800 dark:border-gray-700">
-              <blockquote class="max-w-2xl mx-auto mb-4 text-gray-500 lg:mb-8 dark:text-gray-400">
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                  Efficient Collaborating
-                </h3>
-                <p class="my-4">
-                  You have many examples that can be used to create a fast
-                  prototype for your team."
-                </p>
-              </blockquote>
-              <figcaption class="flex items-center justify-center space-x-3">
-                <img
-                  class="rounded-full w-9 h-9"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/joseph-mcfall.png"
-                  alt="avatar"
-                />
-                <div class="space-y-0.5 font-medium dark:text-white text-left">
-                  <div>Joseph McFall</div>
-                  <div class="text-sm text-gray-500 dark:text-gray-400">
-                    CTO at Google
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-        <section className="flex flex-col items-center mt-10">
-          <h2 className="text-4xl pb-5">FAQ</h2>
-          <div id="accordion-open" data-accordion="open">
-            <h2 id="accordion-open-heading-1">
-              <button
-                type="button"
-                class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                data-accordion-target="#accordion-open-body-1"
-                aria-expanded="true"
-                aria-controls="accordion-open-body-1"
-              >
-                <span class="flex items-center">
-                  <svg
-                    class="w-5 h-5 mr-2 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>{" "}
-                  What is Flowbite?
-                </span>
-                <svg
-                  data-accordion-icon
-                  class="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
-              </button>
-            </h2>
-            <div
-              id="accordion-open-body-1"
-              class="hidden"
-              aria-labelledby="accordion-open-heading-1"
-            >
-              <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  Flowbite is an open-source library of interactive components
-                  built on top of Tailwind CSS including buttons, dropdowns,
-                  modals, navbars, and more.
-                </p>
-                <p class="text-gray-500 dark:text-gray-400">
-                  Check out this guide to learn how to{" "}
-                  <a
-                    href="/docs/getting-started/introduction/"
-                    class="text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    get started
-                  </a>{" "}
-                  and start developing websites even faster with components on
-                  top of Tailwind CSS.
+          <div class="hero pt-4 bg-white">
+            <div class="hero-content flex-col lg:flex-row">
+              <img src={Intro1} class="lg:w-80 rounded-lg shadow-2xl" alt="" />
+              <div>
+                <h3 class="text-4xl font-bold">Quality Over Quantity</h3>
+                <p class="py-6">
+                  While many dating apps play the numbers game, Tulip champions
+                  the idea of quality over quantity. We understand that
+                  meaningful connections aren't about how many matches you have,
+                  but the depth and authenticity of each interaction.
                 </p>
               </div>
             </div>
-            <h2 id="accordion-open-heading-2">
+          </div>
+          <div class="hero bg-white">
+            <div class="hero-content flex-col lg:flex-row">
+              <img src={Intro1} class="lg:w-80 rounded-lg shadow-2xl" alt="" />
+              <div>
+                <h3 class="text-4xl font-bold">Beyond Superficial Swipes</h3>
+                <p class="py-6">
+                  Tulip moves beyond the superficial swiping culture. Our
+                  platform encourages users to delve deeper into conversations,
+                  understand each other's values, and build a foundation that
+                  can lead to lasting relationships.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="hero bg-white">
+            <div class="hero-content flex-col lg:flex-row">
+              <img src={Intro1} class="lg:w-80 rounded-lg shadow-2xl" alt="" />
+              <div>
+                <h3 class="text-4xl font-bold">Empowerment & Balance</h3>
+                <p class="py-6">
+                  While other platforms may perpetuate certain gender norms,
+                  Tulip stands for balance. We encourage all users, regardless
+                  of gender, to take initiative and control of their dating
+                  journey, fostering an environment of mutual respect and
+                  understanding.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* What other say */}
+        <section class="text-neutral-700 dark:text-neutral-300 bg-base-200">
+          <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl py-20">
+            <h2 class="mb-6 text-5xl font-bold">What other say</h2>
+          </div>
+          <div class="grid gap-6 text-center md:grid-cols-3">
+            <div>
+              <div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-700 dark:shadow-black/30">
+                <div class="h-28 overflow-hidden rounded-t-lg bg-[#9d789b]"></div>
+                <div class="mx-auto -mt-12 w-24 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800">
+                  <img
+                    src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp"
+                    alt=""
+                  />
+                </div>
+                <div class="p-6">
+                  <h4 class="mb-4 text-2xl font-semibold">Adam</h4>
+                  <hr />
+                  <p class="mt-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      class="inline-block h-7 w-7 pr-2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
+                    </svg>
+                    I've tried multiple dating apps in the past, but Tulip is
+                    truly a game-changer. The one-connection approach made me
+                    more intentional about my interactions, and I've had some of
+                    the most meaningful conversations here.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-700 dark:shadow-black/30">
+                <div class="h-28 overflow-hidden rounded-t-lg bg-[#7a81a8]"></div>
+                <div class="mx-auto -mt-12 w-24 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800">
+                  <img
+                    src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+                    alt=""
+                  />
+                </div>
+                <div class="p-6">
+                  <h4 class="mb-4 text-2xl font-semibold">Jed</h4>
+                  <hr />
+                  <p class="mt-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      class="inline-block h-7 w-7 pr-2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
+                    </svg>
+                    Tulip has taken the distraction out of online dating. It's
+                    refreshing to focus on one person at a time, giving each
+                    connection the attention it deserves. I've never felt this
+                    connected on a dating platform before.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="block rounded-lg bg-white shadow-lg dark:bg-neutral-700 dark:shadow-black/30">
+                <div class="h-28 overflow-hidden rounded-t-lg bg-[#6d5b98]"></div>
+                <div class="mx-auto -mt-12 w-24 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800">
+                  <img
+                    src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+                    alt=""
+                  />
+                </div>
+                <div class="p-6">
+                  <h4 class="mb-4 text-2xl font-semibold">Adrain</h4>
+                  <hr />
+                  <p class="mt-4">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      class="inline-block h-7 w-7 pr-2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M13 14.725c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275zm-13 0c0-5.141 3.892-10.519 10-11.725l.984 2.126c-2.215.835-4.163 3.742-4.38 5.746 2.491.392 4.396 2.547 4.396 5.149 0 3.182-2.584 4.979-5.199 4.979-3.015 0-5.801-2.305-5.801-6.275z" />
+                    </svg>
+                    Tulip offers a dating experience like no other. It
+                    encourages taking things slow, understanding each other, and
+                    building a real connection. I've had some of the most
+                    meaningful conversations on this platform.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* FAQ */}
+        <section id="accordionFlushExample">
+          <div class="mx-auto text-center md:max-w-xl lg:max-w-3xl py-20">
+            <h2 class="mb-6 text-5xl font-bold">FAQ</h2>
+          </div>
+          {/* Question1 */}
+          <div class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+            <h2 class="mb-0" id="flush-headingOne">
               <button
+                class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
                 type="button"
-                class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                data-accordion-target="#accordion-open-body-2"
+                data-te-collapse-init
+                data-te-target="#flush-collapseOne"
                 aria-expanded="false"
-                aria-controls="accordion-open-body-2"
+                aria-controls="flush-collapseOne"
               >
-                <span class="flex items-center">
+                How Does the One Connection at a Time Feature Work?
+                <span class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
                   <svg
-                    class="w-5 h-5 mr-2 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6"
                   >
                     <path
-                      fill-rule="evenodd"
-                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
-                    ></path>
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
                   </svg>
-                  Is there a Figma file available?
                 </span>
-                <svg
-                  data-accordion-icon
-                  class="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
               </button>
             </h2>
             <div
-              id="accordion-open-body-2"
-              class="hidden"
-              aria-labelledby="accordion-open-heading-2"
+              id="flush-collapseOne"
+              class="!visible border-0"
+              data-te-collapse-item
+              data-te-collapse-show
+              aria-labelledby="flush-headingOne"
+              data-te-parent="#accordionFlushExample"
             >
-              <div class="p-5 border border-b-0 border-gray-200 dark:border-gray-700">
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  Flowbite is first conceptualized and designed using the Figma
-                  software so everything you see in the library has a design
-                  equivalent in our Figma file.
-                </p>
-                <p class="text-gray-500 dark:text-gray-400">
-                  Check out the{" "}
-                  <a
-                    href="https://flowbite.com/figma/"
-                    class="text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Figma design system
-                  </a>{" "}
-                  based on the utility classes from Tailwind CSS and components
-                  from Flowbite.
-                </p>
+              <div class="px-5 py-4">
+                Once you match with someone on Tulip, you can focus solely on
+                that individual, promoting more meaningful conversations and
+                connections. You won't be able to make another connection until
+                you decide to move on or the connection naturally fades,
+                ensuring a dedicated and focused dating experience.
               </div>
             </div>
-            <h2 id="accordion-open-heading-3">
+          </div>
+          {/* Question2 */}
+          <div class="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+            <h2 class="mb-0" id="flush-headingTwo">
               <button
+                class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
                 type="button"
-                class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
-                data-accordion-target="#accordion-open-body-3"
+                data-te-collapse-init
+                data-te-collapse-collapsed
+                data-te-target="#flush-collapseTwo"
                 aria-expanded="false"
-                aria-controls="accordion-open-body-3"
+                aria-controls="flush-collapseTwo"
               >
-                <span class="flex items-center">
+                Is Tulip Safe to Use?
+                <span class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
                   <svg
-                    class="w-5 h-5 mr-2 shrink-0"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6"
                   >
                     <path
-                      fill-rule="evenodd"
-                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>{" "}
-                  What are the differences between Flowbite and Tailwind UI?
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
                 </span>
-                <svg
-                  data-accordion-icon
-                  class="w-3 h-3 rotate-180 shrink-0"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 10 6"
-                >
-                  <path
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5 5 1 1 5"
-                  />
-                </svg>
               </button>
             </h2>
             <div
-              id="accordion-open-body-3"
-              class="hidden"
-              aria-labelledby="accordion-open-heading-3"
+              id="flush-collapseTwo"
+              class="!visible hidden border-0"
+              data-te-collapse-item
+              aria-labelledby="flush-headingTwo"
+              data-te-parent="#accordionFlushExample"
             >
-              <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  The main difference is that the core components from Flowbite
-                  are open source under the MIT license, whereas Tailwind UI is
-                  a paid product. Another difference is that Flowbite relies on
-                  smaller and standalone components, whereas Tailwind UI offers
-                  sections of pages.
-                </p>
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  However, we actually recommend using both Flowbite, Flowbite
-                  Pro, and even Tailwind UI as there is no technical reason
-                  stopping you from using the best of two worlds.
-                </p>
-                <p class="mb-2 text-gray-500 dark:text-gray-400">
-                  Learn more about these technologies:
-                </p>
-                <ul class="pl-5 text-gray-500 list-disc dark:text-gray-400">
-                  <li>
-                    <a
-                      href="https://flowbite.com/pro/"
-                      class="text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Flowbite Pro
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://tailwindui.com/"
-                      rel="nofollow"
-                      class="text-blue-600 dark:text-blue-500 hover:underline"
-                    >
-                      Tailwind UI
-                    </a>
-                  </li>
-                </ul>
+              <div class="px-5 py-4">
+                Safety is our top priority. Tulip incorporates robust security
+                features and protocols to ensure the privacy and safety of our
+                users. We encourage a respectful and kind interaction space and
+                have measures in place to report and block malicious users.
+              </div>
+            </div>
+          </div>
+          {/* Question3 */}
+          <div class="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+            <h2 class="mb-0" id="flush-headingThree">
+              <button
+                class="group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white [&:not([data-te-collapse-collapsed])]:bg-white [&:not([data-te-collapse-collapsed])]:text-primary [&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:[&:not([data-te-collapse-collapsed])]:bg-neutral-800 dark:[&:not([data-te-collapse-collapsed])]:text-primary-400 dark:[&:not([data-te-collapse-collapsed])]:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]"
+                type="button"
+                data-te-collapse-init
+                data-te-collapse-collapsed
+                data-te-target="#flush-collapseThree"
+                aria-expanded="false"
+                aria-controls="flush-collapseThree"
+              >
+                How Do I Set Up My Profile on Tulip?
+                <span class="-mr-1 ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:mr-0 group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="h-6 w-6"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
+                </span>
+              </button>
+            </h2>
+            <div
+              id="flush-collapseThree"
+              class="!visible hidden"
+              data-te-collapse-item
+              aria-labelledby="flush-headingThree"
+              data-te-parent="#accordionFlushExample"
+            >
+              <div class="px-5 py-4">
+                Setting up your profile is simple. Download the Tulip app,
+                follow the on-screen instructions to create an account, and fill
+                in your profile information. You can customize your profile to
+                showcase your personality, interests, and what you’re looking
+                for in a connection.
               </div>
             </div>
           </div>
         </section>
+        {/* Download */}
         <section className="flex flex-col items-center mt-10">
-          <p className="text-4xl pb-5 text-center">Download for mobile</p>
+          <div className="flex justify-center text-5xl py-10">
+            <h2>Download for mobile</h2>
+          </div>
+          {/* <DownloadBtn /> */}
           <Button />
         </section>
       </main>
