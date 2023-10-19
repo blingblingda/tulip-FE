@@ -10,7 +10,7 @@ export default function Header() {
         <h1 className="text-4xl pl-4 text-white">tulip</h1>
       </div>
       <div className="mr-7">
-        <Button />
+        <Button text={"Login"} />
       </div>
     </header>
   );

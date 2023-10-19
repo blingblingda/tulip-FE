@@ -3,6 +3,7 @@ module.exports = {
     "./index.html",
     "./src/**/*.{js,jsx}",
     "./node_modules/tw-elements/dist/js/**/*.js",
+    "./node_modules/tw-elements-react/dist/js/**/*.js",
   ],
   theme: {
     extend: {
@@ -19,5 +20,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui"), require("tw-elements/dist/plugin.cjs")],
+  plugins: [
+    require("daisyui"),
+    require("tw-elements/dist/plugin.cjs"),
+    require("tw-elements-react/dist/plugin.cjs"),
+  ],
 };
