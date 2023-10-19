@@ -18,7 +18,7 @@ export default function HomePage() {
               alt="screenshot"
             />
             <div>
-              <h1 className="text-8xl font-bold">tulip</h1>
+              <h1 className="text-8xl font-bold text-white">tulip</h1>
               <p className="py-6">Where connections blossom.</p>
               <Button />
             </div>
