@@ -11,6 +11,7 @@ import DatePicker from "./Date";
 import { useForm } from "react-hook-form";
 import PassionsModal from "./Modal";
 import StaticBackdrop from "./Modal";
+import IdentificationComponent from "./Gender";
 
 export default function Profile() {
   return (
@@ -147,11 +148,15 @@ export default function Profile() {
                 </div>
               </div>
 
+              <div className="sm:col-span-4">
+                <IdentificationComponent />
+              </div>
+
               <div className="sm:col-span-3">
                 <DatePicker />
               </div>
 
-              <div className="sm:col-span-4">
+              {/* <div className="sm:col-span-4">
                 <label
                   htmlFor="email"
                   className="block text-lg font-medium leading-6 text-gray-900"
@@ -167,7 +172,7 @@ export default function Profile() {
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
-              </div>
+              </div> */}
 
               {/* <div className="sm:col-span-3">
               <label htmlFor="country" className="block text-lg font-medium leading-6 text-gray-900">
@@ -380,7 +385,7 @@ export default function Profile() {
           </div>
         </div>
 
-        <div>
+        <div className="py-3">
           <PassionsModal />
         </div>
 
