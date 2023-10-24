@@ -8,15 +8,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        custom: {
-          plum: "#7c0c34",
-          magenta: "#b80d54",
-          hotmag: "#ff309d",
-          lightpink: "#fe66c5",
-          aqua: "#86fbfb",
-          white: "#f7f8fa",
-          black: "#171321",
-        },
+          'custom-plum': '#b80d54',          // A custom primary color
+          // plum: "#7c0c34",
+          // "magenta" : "#b80d54",
+          // hotmag: "#ff309d",
+          // lightpink: "#fe66c5",
+          // aqua: "#86fbfb",
+          // white: "#f7f8fa",
+          // black: "#171321",
       },
     },
   },
@@ -24,5 +23,6 @@ module.exports = {
     require("daisyui"),
     require("tw-elements/dist/plugin.cjs"),
     require("tw-elements-react/dist/plugin.cjs"),
+    require('@tailwindcss/forms'),
   ],
 };
