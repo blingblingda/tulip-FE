@@ -4,6 +4,7 @@ import HomePage from "./components/pages/HomePage/HomePage";
 import RegistrationPage from "./components/pages/RegistrationPage/RegistrationPage";
 import { MatchPage } from "./components/pages/MatchPage/MatchPage";
 import ChatBoxPage from "./components/pages/ChatBoxPage/ChatBoxPage";
+import { SignUp } from "./components/pages/SignUpPage/SignUp";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/match" element={<MatchPage />} />
         <Route path="/chat" element={<ChatBoxPage />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   );
