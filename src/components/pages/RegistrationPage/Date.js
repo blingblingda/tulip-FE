@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 
-function DatePicker() {
+function DatePicker({ onAgeChange }) {
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [age, setAge] = useState(null);
+
+  onAgeChange(age);
 
   // Calculate today's date minus 18 years to set as the maximum selectable date.
   const maxDate = new Date(

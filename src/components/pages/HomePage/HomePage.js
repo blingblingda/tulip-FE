@@ -192,11 +192,10 @@ export default function HomePage() {
         {/* FAQ */}
         <Accordion />
         {/* Download */}
-        <section className="flex flex-col items-center mt-10">
+        <section className="flex flex-col items-center my-10">
           <div className="flex justify-center text-center text-5xl py-10">
             <h2>Download for mobile</h2>
           </div>
-          {/* Open the modal using document.getElementById('ID').showModal() method */}
           <Button
             text={"Download"}
             onClick={() => document.getElementById("my_modal_5").showModal()}
@@ -211,7 +210,6 @@ export default function HomePage() {
               </div>
               <div className="modal-action">
                 <form method="dialog">
-                  {/* if there is a button in form, it will close the modal */}
                   <Button text={"Close"} />
                 </form>
               </div>

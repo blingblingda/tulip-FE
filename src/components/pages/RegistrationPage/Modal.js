@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../../UI/Button.css";
 
-function PassionsModal() {
+function PassionsModal({ onPassionsChange }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedPassions, setSelectedPassions] = useState([]);
   const [savedPassions, setSavedPassions] = useState([]);
@@ -42,6 +42,8 @@ function PassionsModal() {
       }
     }
   };
+
+  onPassionsChange(selectedPassions);
 
   return (
     <div>

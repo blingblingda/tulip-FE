@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 
-const IdentificationComponent = () => {
+const Gender = ({ onGenderChange }) => {
   const [selectedOption, setSelectedOption] = useState("");
+
+  const handleGenderChange = (e) => {
+    const option = e.target.value;
+    setSelectedOption(option);
+    onGenderChange(option);
+  };
 
   return (
     <div>
@@ -27,7 +33,7 @@ const IdentificationComponent = () => {
                 value={option}
                 name="list-radio"
                 checked={selectedOption === option}
-                onChange={() => setSelectedOption(option)}
+                onChange={handleGenderChange}
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
               />
               <label
@@ -46,4 +52,4 @@ const IdentificationComponent = () => {
   );
 };
 
-export default IdentificationComponent;
+export default Gender;
