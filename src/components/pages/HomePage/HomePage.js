@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../UI/Header";
 import ScreenShot from "../../../assets/screenShot.png";
 import Why1 from "../../../assets/why-1.avif";
@@ -8,8 +8,12 @@ import Button from "../../UI/Button";
 import Footer from "../../UI/Footer";
 import Accordion from "./Accordion";
 import Download from "../../../assets/download.jpg";
+import Modal from "../../UI/Modal";
+import { SignUp } from "../SignUpPage/SignUp";
 
 export default function HomePage() {
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+
   return (
     <div>
       <Header />
@@ -25,7 +29,10 @@ export default function HomePage() {
             <div>
               <h1 className="text-8xl font-bold text-black">tulip</h1>
               <p className="py-6">Where connections blossom.</p>
-              <Button text={"SignUp"} />
+              <Button
+                text={"Sign Up"}
+                onClick={() => setLoginModalOpen(true)}
+              />
             </div>
           </div>
         </section>
@@ -218,6 +225,9 @@ export default function HomePage() {
         </section>
       </main>
       <Footer />
+      <Modal show={isLoginModalOpen} onClose={() => setLoginModalOpen(false)}>
+        <SignUp />
+      </Modal>
     </div>
   );
 }
