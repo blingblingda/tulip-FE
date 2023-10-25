@@ -52,6 +52,9 @@ export default function Profile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const passionLabels = selectedPassions.map((passion) => passion.label);
+
     console.log(
       firstName,
       lastName,
@@ -61,7 +64,7 @@ export default function Profile() {
       selectedState,
       genderPrefer,
       relationIntent,
-      selectedPassions
+      passionLabels
     );
   };
 
