@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Logo from "../../assets/tulip-192x192.png";
 import Button from "../UI/Button";
 import Modal from "./Modal";
-import Login from "../pages/LoginPage/Login";
+import { Login } from "../pages/LoginPage/Login";
 
 export default function Header() {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
