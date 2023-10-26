@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../UI/Button";
+import { Button } from "../../UI/Button";
 
 export const Login = () => {
   const [email, setEmail] = useState("");

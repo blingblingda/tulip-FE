@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TECollapse } from "tw-elements-react";
 
-export default function Accordion(): JSX.Element {
+export const Accordion = (): JSX.Element => {
   const [activeElement, setActiveElement] = useState("");
 
   const handleClick = (value: string) => {
@@ -11,6 +11,7 @@ export default function Accordion(): JSX.Element {
       setActiveElement(value);
     }
   };
+
   return (
     <div id="accordionExample">
       <div className="mx-auto text-center md:max-w-xl lg:max-w-3xl py-20">
@@ -170,4 +171,4 @@ export default function Accordion(): JSX.Element {
       </div>
     </div>
   );
-}
+};

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../UI/Button";
+import { Button } from "../../UI/Button";
 
 export const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -51,10 +51,10 @@ export const SignUp = () => {
           <div className="w-full relative">
             <div className="md:mt-6">
               <div className="text-center font-semibold text-black">
-                Lorem ipsum dolor
+                Sign Up
               </div>
-              <div className="text-center font-base text-black">
-                Sed ut perspiciatis unde?
+              <div className="text-center font-semibold text-black">
+                Welcome to tulip!
               </div>
               <form className="mt-8">
                 <div className="mx-auto max-w-lg">
@@ -81,7 +81,9 @@ export const SignUp = () => {
                     />
                   </div>
                   <div className="py-1">
-                    <span className="px-1 text-sm text-gray-600">Password Confirm</span>
+                    <span className="px-1 text-sm text-gray-600">
+                      Password Confirm
+                    </span>
                     <input
                       id="password-confirm"
                       type="password"
@@ -108,14 +110,26 @@ export const SignUp = () => {
                         stroke="currentColor"
                       >
                         {password === confirmPassword && password.length > 0 ? (
-                          <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                          <path
+                            d="M5 13l4 4L19 7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                          />
                         ) : (
-                          <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                          <path
+                            d="M6 18L18 6M6 6l12 12"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                          />
                         )}
                       </svg>
                     </div>
                     <span className="font-medium text-sm ml-3">
-                      {password === confirmPassword && password.length > 0 ? "Passwords match" : "Passwords do not match"}
+                      {password === confirmPassword && password.length > 0
+                        ? "Passwords match"
+                        : "Passwords do not match"}
                     </span>
                   </div>
 
@@ -134,31 +148,38 @@ export const SignUp = () => {
                         stroke="currentColor"
                       >
                         {password.length > 7 ? (
-                          <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                          <path
+                            d="M5 13l4 4L19 7"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                          />
                         ) : (
-                          <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+                          <path
+                            d="M6 18L18 6M6 6l12 12"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                          />
                         )}
                       </svg>
                     </div>
                     <span className="font-medium text-sm ml-3">
-                      {password.length > 7 ? "The minimum length is reached" : "At least 8 characters required"}
+                      {password.length > 7
+                        ? "The minimum length is reached"
+                        : "At least 8 characters required"}
                     </span>
                   </div>
 
-                  <div className="flex justify-center items-center">
-                    <Button text="Register" onClick={handleSubmit} type="submit" />
+                  <div className="flex justify-center items-center mt-6">
+                    <Button
+                      text="Register"
+                      onClick={handleSubmit}
+                      type="submit"
+                    />
                   </div>
                 </div>
               </form>
-
-              <div className="text-sm font-semibold block sm:hidden py-6 flex justify-center">
-                <a
-                  href="#"
-                  className="text-black font-normal border-b-2 border-gray-200 hover:border-teal-500"
-                >
-                  You're already member? <span className="text-black font-semibold">Login</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>

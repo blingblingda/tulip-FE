@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Gender = ({ onGenderChange }) => {
+export const Gender = ({ onGenderChange }) => {
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleGenderChange = (e) => {
@@ -51,5 +51,3 @@ const Gender = ({ onGenderChange }) => {
     </div>
   );
 };
-
-export default Gender;

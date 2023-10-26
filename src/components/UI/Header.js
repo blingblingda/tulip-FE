@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Logo from "../../assets/tulip-192x192.png";
-import Button from "../UI/Button";
-import Modal from "./Modal";
+import { Button } from "../UI/Button";
+import { Modal } from "./Modal";
 import { Login } from "../pages/LoginPage/Login";
 
-export default function Header() {
+export const Header = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
   return (
@@ -24,4 +24,4 @@ export default function Header() {
       </Modal>
     </>
   );
-}
+};

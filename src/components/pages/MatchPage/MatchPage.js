@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "../../UI/Header";
-import Footer from "../../UI/Footer";
+import { Header } from "../../UI/Header";
+import { Footer } from "../../UI/Footer";
 import { Pcard } from "./Pcard";
 
 export const MatchPage = () => {

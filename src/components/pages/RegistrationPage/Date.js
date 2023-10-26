@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function DatePicker({ onAgeChange }) {
+export const DatePicker = ({ onAgeChange }) => {
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [age, setAge] = useState(null);
 
@@ -38,6 +38,4 @@ function DatePicker({ onAgeChange }) {
       {age && <div className="mt-4 text-lg">You are {age}</div>}
     </div>
   );
-}
-
-export default DatePicker;
+};

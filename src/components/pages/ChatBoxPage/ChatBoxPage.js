@@ -1,7 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class ChatBoxPage extends Component {
-  render() {
-    return <div>ChatBoxPage</div>;
-  }
-}
+export const ChatBoxPage = () => {
+  return <div>ChatBoxPage</div>;
+};

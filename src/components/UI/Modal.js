@@ -1,7 +1,7 @@
 // Modal.js
 import React from "react";
 
-function Modal({ show, onClose, children }) {
+export const Modal = ({ show, onClose, children }) => {
   if (!show) return null;
 
   return (
@@ -13,6 +13,4 @@ function Modal({ show, onClose, children }) {
       <div className="bg-white p-8 rounded shadow-lg z-10">{children}</div>
     </div>
   );
-}
-
-export default Modal;
+};

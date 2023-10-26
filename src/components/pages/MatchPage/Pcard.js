@@ -1,6 +1,6 @@
 import React from "react";
 import { TERipple } from "tw-elements-react";
-import Button from "../../UI/Button";
+import { Button } from "../../UI/Button";
 
 export const Pcard = ({
   url,

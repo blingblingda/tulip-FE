@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Header from "../../UI/Header";
-import Footer from "../../UI/Footer";
-import Button from "../../UI/Button";
-import DatePicker from "./Date";
-import PassionsModal from "./Modal";
-import Gender from "./Gender";
+import { Header } from "../../UI/Header";
+import { Footer } from "../../UI/Footer";
+import { Button } from "../../UI/Button";
+import { DatePicker } from "./Date";
+import { PassionsModal } from "./Modal";
+import { Gender } from "./Gender";
 
-export default function Profile() {
+export const RegistrationPage = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
@@ -335,4 +335,4 @@ export default function Profile() {
       <Footer />
     </div>
   );
-}
+};

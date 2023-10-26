@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import Header from "../../UI/Header";
+import { Header } from "../../UI/Header";
 import ScreenShot from "../../../assets/screenShot.png";
 import Why1 from "../../../assets/why-1.avif";
 import Why2 from "../../../assets/why-2.webp";
 import Why3 from "../../../assets/why-3.jpeg";
-import Button from "../../UI/Button";
-import Footer from "../../UI/Footer";
-import Accordion from "./Accordion";
+import { Button } from "../../UI/Button";
+import { Footer } from "../../UI/Footer";
+import { Accordion } from "./Accordion";
 import Download from "../../../assets/download.jpg";
-import Modal from "../../UI/Modal";
+import { Modal } from "../../UI/Modal";
 import { SignUp } from "../SignUpPage/SignUp";
 
-export default function HomePage() {
+export const HomePage = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
 
   return (
@@ -230,4 +230,4 @@ export default function HomePage() {
       </Modal>
     </div>
   );
-}
+};

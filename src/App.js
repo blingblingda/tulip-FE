@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./components/pages/HomePage/HomePage";
-import RegistrationPage from "./components/pages/RegistrationPage/RegistrationPage";
+import { HomePage } from "./components/pages/HomePage/HomePage";
+import { RegistrationPage } from "./components/pages/RegistrationPage/RegistrationPage";
 import { MatchPage } from "./components/pages/MatchPage/MatchPage";
-import ChatBoxPage from "./components/pages/ChatBoxPage/ChatBoxPage";
+import { ChatBoxPage } from "./components/pages/ChatBoxPage/ChatBoxPage";
 import { SignUp } from "./components/pages/SignUpPage/SignUp";
 
-function App() {
+export const App = () => {
   return (
     <BrowserRouter>
       <Routes>
@@ -18,5 +18,4 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
-}
-export default App;
+};
