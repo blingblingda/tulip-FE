@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../UI/Button";
 
 export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     const { id, value } = e.target;
@@ -22,7 +24,7 @@ export const SignUp = () => {
     return emailRegex.test(email);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!isValidEmail(email)) {
@@ -40,8 +42,26 @@ export const SignUp = () => {
       return;
     }
 
-    console.log(email, password);
-    // ... send data to backend logic
+    const userData = {
+      email: email,
+      password: password,
+    };
+
+    fetch("http://localhost:3001/api/profile/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        navigate("/registration");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   return (
