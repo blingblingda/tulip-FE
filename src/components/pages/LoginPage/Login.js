@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../UI/Button";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     const { id, value } = e.target;
@@ -14,12 +16,29 @@ export const Login = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password);
-    // Todo: send data to backend logic
-  };
+    const userData = {
+      email: email,
+      password: password,
+    };
 
+    fetch("http://localhost:3001/api/auth/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        localStorage.setItem("token", data.token);
+        navigate("/match");
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
   return (
     <div className="container max-w-full mx-auto md:py-24 px-6">
       <div className="max-w-sm mx-auto px-6">
