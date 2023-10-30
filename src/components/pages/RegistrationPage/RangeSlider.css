@@ -1,0 +1,60 @@
+/* For the thumb (handle) */
+input[type="range"]::-webkit-slider-thumb {
+  width: 20px; /* Adjust if needed */
+  height: 20px; /* Adjust if needed */
+  background: rgb(201, 25, 125);
+  border-radius: 50%; /* This makes the thumb circular */
+  cursor: pointer;
+  -webkit-appearance: none; /* Override default appearance */
+  margin-top: -9px; /* You might need to adjust this depending upon the height of the slider */
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: rgb(201, 25, 125);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  background: rgb(201, 25, 125);
+  border-radius: 50%;
+  cursor: pointer;
+  appearance: none;
+}
+
+/* For the track (background) */
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px; /* Adjust the height for the thickness of the line */
+  cursor: pointer;
+  background: black;
+  border-radius: 1.3px;
+  -webkit-appearance: none; /* Override default appearance */
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: black;
+  border-radius: 1.3px;
+}
+
+input[type="range"]::-ms-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: black;
+  border-radius: 1.3px;
+  appearance: none;
+  color: transparent; /* Removes default tick marks */
+}
+
+/* Remove focus outline */
+input[type="range"]:focus {
+  outline: none;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../UI/Button";
+import Logo from "../../../assets/tulip-32x32.png";
 
 export const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -70,6 +71,14 @@ export const SignUp = () => {
         <div className="relative flex flex-wrap">
           <div className="w-full relative">
             <div className="md:mt-6">
+              {/* Logo */}
+              <div className="text-center">
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className="mx-auto mb-4" // You can adjust the margin-bottom as needed
+                />
+              </div>
               <div className="text-center font-semibold text-black">
                 Sign Up
               </div>

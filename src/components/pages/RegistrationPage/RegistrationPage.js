@@ -2,9 +2,80 @@ import React, { useState } from "react";
 import { Header } from "../../UI/Header";
 import { Footer } from "../../UI/Footer";
 import { Button } from "../../UI/Button";
-import { DatePicker } from "./Date";
+import { CustomDatePicker as DatePicker } from "./Date";
 import { PassionsModal } from "./Modal";
 import { Gender } from "./Gender";
+import RangeSlider from "./RangeSlider";
+
+const validateForm = ({
+  firstName,
+  lastName,
+  gender,
+  min,
+  max,
+  city,
+  selectedState,
+  genderPrefer,
+  relationIntent,
+  selectedPassions,
+}) => {
+  // Checking if any field is empty
+  if (
+    !firstName ||
+    !lastName ||
+    !gender ||
+    !min ||
+    !max ||
+    !city ||
+    !selectedState ||
+    !genderPrefer ||
+    !relationIntent
+  ) {
+    return { isValid: false, message: "All fields must be filled!" };
+  }
+
+  // Checking if names contain numbers
+  const hasNumber = /\d/;
+  if (hasNumber.test(firstName) || hasNumber.test(lastName)) {
+    return { isValid: false, message: "Names cannot contain numbers!" };
+  }
+
+  if (hasNumber.test(city)) {
+    return { isValid: false, message: "City cannot contain numbers!" };
+  }
+
+  if (isNaN(min) || min < 18 || min > 65) {
+    return {
+      isValid: false,
+      message: "Age must be a number between 18 and 65!",
+    };
+  }
+
+  if (isNaN(max) || max < 18 || max > 65) {
+    return {
+      isValid: false,
+      message: "Age must be a number between 18 and 65!",
+    };
+  }
+
+  if (min >= max) {
+    return {
+      isValid: false,
+      message: "Minimum age must be less than maximum age!",
+    };
+  }
+
+  if (selectedPassions.length < 5) {
+    return {
+      isValid: false,
+      message: "At least five passions must be selected!",
+    };
+  }
+
+  // You can add more validations as needed
+
+  return { isValid: true, message: "" };
+};
 
 export const RegistrationPage = () => {
   const [firstName, setFirstName] = useState("");
@@ -16,6 +87,8 @@ export const RegistrationPage = () => {
   const [genderPrefer, setGenderPrefer] = useState("");
   const [relationIntent, setRelationIntent] = useState("");
   const [selectedPassions, setSelectedPassions] = useState([]);
+  const [ageRange, setAgeRange] = useState({ min: 18, max: 65 });
+  const [formError, setFormError] = useState("");
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -53,19 +126,60 @@ export const RegistrationPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const passionLabels = selectedPassions.map((passion) => passion.label);
+    // Trim input values to remove leading/trailing spaces
+    const trimmedFirstName = firstName.trim();
+    const trimmedLastName = lastName.trim();
+    const trimmedCity = city.trim();
 
-    console.log(
-      firstName,
-      lastName,
+    const validationResult = validateForm({
+      firstName: trimmedFirstName,
+      lastName: trimmedLastName,
       gender,
-      age,
-      city,
+      min: ageRange.min,
+      max: ageRange.max,
+      city: trimmedCity,
       selectedState,
       genderPrefer,
       relationIntent,
-      passionLabels
-    );
+      selectedPassions,
+    });
+
+    if (!validationResult.isValid) {
+      setFormError(validationResult.message);
+    } else {
+      setFormError("");
+      // Define passionLabels here based on your actual data
+      const passionLabels = selectedPassions.map((passion) => passion.label);
+
+      // Form is valid, you can submit data here
+      console.log(
+        trimmedFirstName,
+        trimmedLastName,
+        gender,
+        age,
+        trimmedCity,
+        selectedState,
+        genderPrefer,
+        relationIntent,
+        passionLabels,
+        ageRange
+      );
+    }
+  };
+
+  const handleCancel = () => {
+    // reset the state for all form fields
+    setFirstName("");
+    setLastName("");
+    setGender("");
+    setAge("");
+    setSelectedState("");
+    setCity("");
+    setGenderPrefer("");
+    setRelationIntent("");
+    setSelectedPassions([]);
+    setAgeRange({ min: 18, max: 65 });
+    setFormError("");
   };
 
   return (
@@ -140,6 +254,10 @@ export const RegistrationPage = () => {
               {/* Birthday */}
               <div className="sm:col-span-3">
                 <DatePicker onAgeChange={handleAgeChange} />
+              </div>
+              {/* Age Filter */}
+              <div className="sm:col-span-3">
+                <RangeSlider ageRange={ageRange} setAgeRange={setAgeRange} />
               </div>
               {/* Location */}
               <div className="sm:col-span-2 sm:col-start-1">
@@ -328,9 +446,11 @@ export const RegistrationPage = () => {
         </div>
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
-          <Button text={"Cancel"} type="button" />
-          <Button text={"Save"} type="submit" />
+          <Button text={"Cancel"} type="button" onClick={handleCancel} />
+          <Button text={"Save"} type="submit" disabled={formError !== ""} />
         </div>
+
+        {formError && <div className="mt-4 text-red-600">{formError}</div>}
       </form>
       <Footer />
     </div>
