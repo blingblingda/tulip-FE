@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../UI/Header";
 import ScreenShot from "../../../assets/screenShot.png";
 import Why1 from "../../../assets/why-1.avif";
@@ -13,6 +14,14 @@ import { SignUp } from "../SignUpPage/SignUp";
 
 export const HomePage = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const [userToken, setUserToken] = useState(localStorage.getItem("token"));
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userToken) {
+      navigate("/match");
+    }
+  }, [userToken]);
 
   return (
     <div>

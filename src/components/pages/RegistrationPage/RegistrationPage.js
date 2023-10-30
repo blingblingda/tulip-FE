@@ -152,19 +152,6 @@ export const RegistrationPage = () => {
 
       const passionLabels = selectedPassions.map((passion) => passion.label);
 
-      console.log({
-        name: trimmedFirstName,
-        // trimmedLastName,
-        gender: gender,
-        age: age,
-        city: trimmedCity,
-        state: selectedState,
-        gender_preference: genderPrefer,
-        // relationIntent,
-        passion: passionLabels,
-        age_preference: ageRange,
-      });
-
       const userInfo = {
         name: trimmedFirstName,
         // trimmedLastName,
@@ -177,6 +164,8 @@ export const RegistrationPage = () => {
         passion: passionLabels,
         age_preference: ageRange,
       };
+
+      console.log(userInfo);
 
       fetch(
         `http://localhost:3001/api/profile/${localStorage.getItem("userId")}`,
