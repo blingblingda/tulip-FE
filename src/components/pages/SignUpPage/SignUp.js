@@ -58,6 +58,7 @@ export const SignUp = () => {
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.userId);
         navigate("/registration");
       })
       .catch((err) => {

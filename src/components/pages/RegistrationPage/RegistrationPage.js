@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../../UI/Header";
 import { Footer } from "../../UI/Footer";
 import { Button } from "../../UI/Button";
@@ -65,19 +66,19 @@ const validateForm = ({
     };
   }
 
-  if (selectedPassions.length < 5) {
+  if (selectedPassions.length < 3) {
     return {
       isValid: false,
-      message: "At least five passions must be selected!",
+      message: "At least three passions must be selected!",
     };
   }
-
-  // You can add more validations as needed
 
   return { isValid: true, message: "" };
 };
 
 export const RegistrationPage = () => {
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
@@ -148,22 +149,54 @@ export const RegistrationPage = () => {
       setFormError(validationResult.message);
     } else {
       setFormError("");
-      // Define passionLabels here based on your actual data
+
       const passionLabels = selectedPassions.map((passion) => passion.label);
 
-      // Form is valid, you can submit data here
-      console.log(
-        trimmedFirstName,
-        trimmedLastName,
-        gender,
-        age,
-        trimmedCity,
-        selectedState,
-        genderPrefer,
-        relationIntent,
-        passionLabels,
-        ageRange
-      );
+      console.log({
+        name: trimmedFirstName,
+        // trimmedLastName,
+        gender: gender,
+        age: age,
+        city: trimmedCity,
+        state: selectedState,
+        gender_preference: genderPrefer,
+        // relationIntent,
+        passion: passionLabels,
+        age_preference: ageRange,
+      });
+
+      const userInfo = {
+        name: trimmedFirstName,
+        // trimmedLastName,
+        gender: gender,
+        age: age,
+        city: trimmedCity,
+        state: selectedState,
+        gender_preference: genderPrefer,
+        // relationIntent,
+        passion: passionLabels,
+        age_preference: ageRange,
+      };
+
+      fetch(
+        `http://localhost:3001/api/profile/${localStorage.getItem("userId")}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "x-auth-token": `${localStorage.getItem("token")}`,
+          },
+          body: JSON.stringify(userInfo),
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          navigate("/match");
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   };
 

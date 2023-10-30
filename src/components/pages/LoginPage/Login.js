@@ -34,6 +34,7 @@ export const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.userId);
         navigate("/match");
       })
       .catch((err) => {

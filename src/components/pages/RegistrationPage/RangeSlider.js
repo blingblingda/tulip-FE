@@ -1,6 +1,5 @@
 // export default RangeSlider;
-import React, { useState } from "react";
-import { Button } from "../../UI/Button";
+import React from "react";
 import "./RangeSlider.css";
 
 function RangeSlider({ ageRange = { min: 18, max: 65 }, setAgeRange }) {
