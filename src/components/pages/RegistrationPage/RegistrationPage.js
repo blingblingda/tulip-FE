@@ -7,6 +7,7 @@ import { CustomDatePicker as DatePicker } from "./Date";
 import { PassionsModal } from "./Modal";
 import { Gender } from "./Gender";
 import RangeSlider from "./RangeSlider";
+import axios from "axios";
 
 const validateForm = ({
   firstName,
@@ -76,9 +77,21 @@ const validateForm = ({
   return { isValid: true, message: "" };
 };
 
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:3001", // Replace with your server's URL
+});
+
+const postImage = async (image) => {
+  const formData = new FormData();
+  formData.append("image", image);
+  const result = await axiosInstance.post("/api/images", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+  return result.data;
+};
+
 export const RegistrationPage = () => {
   const navigate = useNavigate();
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [gender, setGender] = useState("");
@@ -90,6 +103,7 @@ export const RegistrationPage = () => {
   const [selectedPassions, setSelectedPassions] = useState([]);
   const [ageRange, setAgeRange] = useState({ min: 18, max: 65 });
   const [formError, setFormError] = useState("");
+  const [file, setFile] = useState();
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -103,30 +117,26 @@ export const RegistrationPage = () => {
       setCity(value);
     }
   };
-
   const handleGenderOptionChange = (option) => {
     setGender(option);
   };
-
   const handleAgeChange = (age) => {
     setAge(age);
   };
-
   const handleGenderPreferChange = (e) => {
     setGenderPrefer(e.target.value);
   };
-
   const handleRelationIntentChange = (e) => {
     setRelationIntent(e.target.value);
   };
-
   const handlePassionsChange = (selectedPassions) => {
     setSelectedPassions(selectedPassions);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+    const result = await postImage(file);
+    console.log(result);
     // Trim input values to remove leading/trailing spaces
     const trimmedFirstName = firstName.trim();
     const trimmedLastName = lastName.trim();
@@ -165,7 +175,7 @@ export const RegistrationPage = () => {
         age_preference: ageRange,
       };
 
-      console.log(userInfo);
+      // console.log(userInfo);
 
       fetch(
         `http://localhost:3001/api/profile/${localStorage.getItem("userId")}`,
@@ -180,7 +190,6 @@ export const RegistrationPage = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           navigate("/match");
         })
         .catch((err) => {
@@ -203,6 +212,26 @@ export const RegistrationPage = () => {
     setAgeRange({ min: 18, max: 65 });
     setFormError("");
   };
+
+  const fileSelected = async (e) => {
+    const file = e.target.files[0];
+    setFile(file);
+  };
+
+  if (file) {
+    if (file.type.startsWith("image/")) {
+      if (file.size <= 5 * 1024 * 1024) {
+        console.log("File selected and within size limit");
+        console.log(file);
+      } else {
+        console.log("File size exceeds the limit (5MB)");
+        alert("File size exceeds the limit (5MB)");
+      }
+    } else {
+      console.log("Selected file is not an image");
+      alert("Selected file is not an image");
+    }
+  }
 
   return (
     <div>
@@ -231,64 +260,58 @@ export const RegistrationPage = () => {
             {/* Image upload */}
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="col-span-full">
-                <div className="mt-10 grid grid-cols-2 gap-4">
-                  {Array(1) // for more change the number
-                    .fill()
-                    .map((_, idx) => (
-                      <div
-                        key={idx}
-                        className="group relative flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 p-6"
-                      >
-                        <span
-                          className="ease absolute left-0 top-0 h-0 w-0 transition-all duration-200 group-hover:w-full"
-                          style={{ borderTop: "2px solid var(--magenta)" }}
-                        ></span>
-                        <span
-                          className="ease absolute right-0 top-0 h-0 w-0 transition-all duration-200 group-hover:h-full"
-                          style={{ borderRight: "2px solid var(--magenta)" }}
-                        ></span>
-                        <span
-                          className="ease absolute bottom-0 right-0 h-0 w-0 transition-all duration-200 group-hover:w-full"
-                          style={{ borderBottom: "2px solid var(--magenta)" }}
-                        ></span>
-                        <span
-                          className="ease absolute bottom-0 left-0 h-0 w-0 transition-all duration-200 group-hover:h-full"
-                          style={{ borderLeft: "2px solid var(--magenta)" }}
-                        ></span>
+                <div className="group relative flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 p-6">
+                  <span
+                    className="ease absolute left-0 top-0 h-0 w-0 transition-all duration-200 group-hover:w-full"
+                    style={{ borderTop: "2px solid var(--magenta)" }}
+                  ></span>
+                  <span
+                    className="ease absolute right-0 top-0 h-0 w-0 transition-all duration-200 group-hover:h-full"
+                    style={{ borderRight: "2px solid var(--magenta)" }}
+                  ></span>
+                  <span
+                    className="ease absolute bottom-0 right-0 h-0 w-0 transition-all duration-200 group-hover:w-full"
+                    style={{ borderBottom: "2px solid var(--magenta)" }}
+                  ></span>
+                  <span
+                    className="ease absolute bottom-0 left-0 h-0 w-0 transition-all duration-200 group-hover:h-full"
+                    style={{ borderLeft: "2px solid var(--magenta)" }}
+                  ></span>
 
-                        <div className="text-center z-10">
-                          <label
-                            htmlFor={`file-upload-${idx}`}
-                            className="relative cursor-pointer rounded-lg bg-white p-4"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              className="mx-auto h-12 w-12 text-gray-300"
-                            >
-                              <circle cx="12" cy="12" r="3.2"></circle>
-                              <path d="M9 2L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3.17L15 2H9z"></path>
-                            </svg>
-                            <input
-                              id={`file-upload-${idx}`}
-                              name={`file-upload-${idx}`}
-                              type="file"
-                              className="sr-only"
-                            />
-                          </label>
-                          <p className="mt-4 text-xs leading-5 text-gray-600">
-                            PNG, JPG, GIF up to 10MB
-                          </p>
-                        </div>
-                      </div>
-                    ))}
+                  <div className="text-center z-10">
+                    <label
+                      htmlFor={"file-upload"}
+                      className="relative cursor-pointer rounded-lg bg-white p-4"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="mx-auto h-12 w-12 text-gray-300"
+                      >
+                        <circle cx="12" cy="12" r="3.2"></circle>
+                        <path d="M9 2L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3.17L15 2H9z"></path>
+                      </svg>
+                      <input
+                        id={"file-upload"}
+                        name={"file-upload"}
+                        type="file"
+                        className="sr-only"
+                        onChange={fileSelected}
+                        accept="image/*"
+                      />
+                    </label>
+                    <p className="mt-4 text-xs leading-5 text-gray-600">
+                      PNG, JPG, GIF up to 10MB
+                    </p>
+                  </div>
                 </div>
               </div>
+
               {/* First name */}
               <div className="sm:col-span-3">
                 <label
