@@ -17,6 +17,7 @@
     "react-hook-form": "^7.47.0",
     "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
+    "talkjs": "^0.16.6",
     "tw-elements": "^1.0.0",
     "tw-elements-react": "^1.0.0-alpha1",
     "web-vitals": "^2.1.4",
