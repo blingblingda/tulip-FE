@@ -7,7 +7,6 @@ import { CustomDatePicker as DatePicker } from "./Date";
 import { PassionsModal } from "./Modal";
 import { Gender } from "./Gender";
 import RangeSlider from "./RangeSlider";
-import axios from "axios";
 
 const validateForm = ({
   firstName,
@@ -20,6 +19,7 @@ const validateForm = ({
   genderPrefer,
   relationIntent,
   selectedPassions,
+  photoUrl,
 }) => {
   // Checking if any field is empty
   if (
@@ -31,7 +31,8 @@ const validateForm = ({
     !city ||
     !selectedState ||
     !genderPrefer ||
-    !relationIntent
+    !relationIntent ||
+    !photoUrl
   ) {
     return { isValid: false, message: "All fields must be filled!" };
   }
@@ -77,19 +78,6 @@ const validateForm = ({
   return { isValid: true, message: "" };
 };
 
-const axiosInstance = axios.create({
-  baseURL: "http://localhost:3001", // Replace with your server's URL
-});
-
-const postImage = async (image) => {
-  const formData = new FormData();
-  formData.append("image", image);
-  const result = await axiosInstance.post("/api/images", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
-  return result.data;
-};
-
 export const RegistrationPage = () => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
@@ -103,7 +91,7 @@ export const RegistrationPage = () => {
   const [selectedPassions, setSelectedPassions] = useState([]);
   const [ageRange, setAgeRange] = useState({ min: 18, max: 65 });
   const [formError, setFormError] = useState("");
-  const [file, setFile] = useState();
+  const [photoUrl, setPhotoUrl] = useState("");
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -132,11 +120,24 @@ export const RegistrationPage = () => {
   const handlePassionsChange = (selectedPassions) => {
     setSelectedPassions(selectedPassions);
   };
+  const handlePhotoUpload = async (e) => {
+    const photoFile = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", photoFile);
+    try {
+      const res = await fetch("http://localhost:3001/api/images", {
+        method: "POST",
+        body: formData,
+      });
+      const result = await res.json();
+      setPhotoUrl(result.photo_url);
+    } catch (err) {
+      console.error("Failed to upload the image.", err);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await postImage(file);
-    console.log(result);
     // Trim input values to remove leading/trailing spaces
     const trimmedFirstName = firstName.trim();
     const trimmedLastName = lastName.trim();
@@ -153,6 +154,7 @@ export const RegistrationPage = () => {
       genderPrefer,
       relationIntent,
       selectedPassions,
+      photoUrl,
     });
 
     if (!validationResult.isValid) {
@@ -173,9 +175,8 @@ export const RegistrationPage = () => {
         // relationIntent,
         passion: passionLabels,
         age_preference: ageRange,
+        photo_url: photoUrl,
       };
-
-      // console.log(userInfo);
 
       fetch(
         `http://localhost:3001/api/profile/${localStorage.getItem("userId")}`,
@@ -211,27 +212,23 @@ export const RegistrationPage = () => {
     setSelectedPassions([]);
     setAgeRange({ min: 18, max: 65 });
     setFormError("");
+    setPhotoUrl("");
   };
 
-  const fileSelected = async (e) => {
-    const file = e.target.files[0];
-    setFile(file);
-  };
-
-  if (file) {
-    if (file.type.startsWith("image/")) {
-      if (file.size <= 5 * 1024 * 1024) {
-        console.log("File selected and within size limit");
-        console.log(file);
-      } else {
-        console.log("File size exceeds the limit (5MB)");
-        alert("File size exceeds the limit (5MB)");
-      }
-    } else {
-      console.log("Selected file is not an image");
-      alert("Selected file is not an image");
-    }
-  }
+  // if (file) {
+  //   if (file.type.startsWith("image/")) {
+  //     if (file.size <= 5 * 1024 * 1024) {
+  //       console.log("File selected and within size limit");
+  //       // console.log(file);
+  //     } else {
+  //       console.log("File size exceeds the limit (5MB)");
+  //       alert("File size exceeds the limit (5MB)");
+  //     }
+  //   } else {
+  //     console.log("Selected file is not an image");
+  //     alert("Selected file is not an image");
+  //   }
+  // }
 
   return (
     <div>
@@ -283,25 +280,31 @@ export const RegistrationPage = () => {
                       htmlFor={"file-upload"}
                       className="relative cursor-pointer rounded-lg bg-white p-4"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="mx-auto h-12 w-12 text-gray-300"
-                      >
-                        <circle cx="12" cy="12" r="3.2"></circle>
-                        <path d="M9 2L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3.17L15 2H9z"></path>
-                      </svg>
+                      {photoUrl ? (
+                        <div className="w-1/5 mx-auto">
+                          <img src={photoUrl} alt="" />
+                        </div>
+                      ) : (
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="mx-auto h-12 w-12 text-gray-300"
+                        >
+                          <circle cx="12" cy="12" r="3.2"></circle>
+                          <path d="M9 2L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3.17L15 2H9z"></path>
+                        </svg>
+                      )}
                       <input
                         id={"file-upload"}
                         name={"file-upload"}
                         type="file"
                         className="sr-only"
-                        onChange={fileSelected}
+                        onChange={handlePhotoUpload}
                         accept="image/*"
                       />
                     </label>
