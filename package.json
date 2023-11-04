@@ -8,7 +8,6 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.6.0",
     "date-fns": "^2.30.0",
     "flowbite-react": "^0.6.4",
     "react": "^18.2.0",
@@ -17,7 +16,6 @@
     "react-hook-form": "^7.47.0",
     "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
-    "talkjs": "^0.16.6",
     "tw-elements": "^1.0.0",
     "tw-elements-react": "^1.0.0-alpha1",
     "web-vitals": "^2.1.4",
@@ -32,7 +30,8 @@
     "workbox-range-requests": "^6.6.0",
     "workbox-routing": "^6.6.0",
     "workbox-strategies": "^6.6.0",
-    "workbox-streams": "^6.6.0"
+    "workbox-streams": "^6.6.0",
+    "socket.io-client": "^4.7.2"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -4,6 +4,9 @@ import { Footer } from "../../UI/Footer";
 import { Pcard } from "./Pcard";
 import { Profile } from "../ProfilePage/Profile";
 import { Modal } from "../../UI/Modal";
+import { Button } from "../../UI/Button";
+import { ChatBox } from "./ChatBox";
+import { socket } from "../../../socketConfig";
 
 // const dummyData = [
 //   {
@@ -92,6 +95,8 @@ export const MatchPage = () => {
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setModalOpen] = useState(false);
   const [selectedProfile, setSelectedProfile] = useState(null);
+  const [joined, setJoined] = useState(false);
+  const [userName, setUserName] = useState("");
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
 
@@ -124,6 +129,45 @@ export const MatchPage = () => {
     setSelectedProfile(null);
   };
 
+  const handleMatch = async () => {
+    // fetch matchId from server...
+    const dummyMatch = {
+      matchId: "123",
+      fromId: "6534934d016ba221aa4a73fe",
+      toId: "65335d5673204fcfb8dff945",
+      status: "accepted",
+    };
+
+    fetch(`http://localhost:3001/api/profile/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (
+          dummyMatch.matchId &&
+          (dummyMatch.fromId === userId || dummyMatch.toId === userId)
+        ) {
+          socket.emit("joinRoom", {
+            matchId: dummyMatch.matchId,
+            userName: data.name,
+          });
+          setUserName(data.name);
+          setJoined(true);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  if (joined) {
+    return <ChatBox username={userName} />;
+  }
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -138,6 +182,7 @@ export const MatchPage = () => {
             onClick={() => openProfileModal(data)}
           />
         ))}
+        <Button text="JoinRoom" onClick={handleMatch} />
       </main>
       <Footer />
       <Modal show={isModalOpen} onClick={closeProfileModal}>
