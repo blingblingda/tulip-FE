@@ -31,10 +31,16 @@ export const ChatBox = ({ username }) => {
   const handleEnd = () => {};
 
   return (
+    //             <div className="col-start-6 col-end-13 p-3 rounded-lg">
+    //             </div>
+    //             <div className="col-start-1 col-end-8 p-3 rounded-lg">
+    //             </div>
+
     <div className="h-screen overflow-hidden flex items-center justify-center">
       <div className="fixed top-0 left-0 w-full flex justify-center bg-white z-50 py-1">
         <Button text={"End Rship"} onClick={handleEnd} />
       </div>
+
       <div className="flex flex-col flex-auto h-full p-6">
         <div className="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-100 h-full p-4">
           <div className="flex flex-col h-full overflow-x-auto mb-4">
