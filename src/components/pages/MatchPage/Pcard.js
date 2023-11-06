@@ -31,7 +31,7 @@ export const Pcard = (props): JSX.Element => {
           </li>
         </ul>
 
-        <Button text={"Let's talk"} />
+        <Button text={"Send invite"} />
       </div>
     </div>
   );

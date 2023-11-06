@@ -28,17 +28,15 @@ export const ChatBox = ({ username }) => {
     }
   };
 
-  const handleEnd = () => {};
+  const handleDisconnect = () => {};
 
   return (
-    //             <div className="col-start-6 col-end-13 p-3 rounded-lg">
-    //             </div>
-    //             <div className="col-start-1 col-end-8 p-3 rounded-lg">
-    //             </div>
+    //<div className="col-start-6 col-end-13 p-3 rounded-lg"></div>
+    //<div className="col-start-1 col-end-8 p-3 rounded-lg"></div>
 
     <div className="h-screen overflow-hidden flex items-center justify-center">
       <div className="fixed top-0 left-0 w-full flex justify-center bg-white z-50 py-1">
-        <Button text={"End Rship"} onClick={handleEnd} />
+        <Button text={"Disconnect"} onClick={handleDisconnect} />
       </div>
 
       <div className="flex flex-col flex-auto h-full p-6">

@@ -182,7 +182,7 @@ export const MatchPage = () => {
             onClick={() => openProfileModal(data)}
           />
         ))}
-        <Button text="JoinRoom" onClick={handleMatch} />
+        <Button text="ChatRoom" onClick={handleMatch} />
       </main>
       <Footer />
       <Modal show={isModalOpen} onClick={closeProfileModal}>
