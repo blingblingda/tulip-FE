@@ -38,10 +38,12 @@ export const HomePage = () => {
             <div>
               <h1 className="text-8xl font-bold text-black">tulip</h1>
               <p className="py-6">Where connections blossom.</p>
+              <div className="flex flex-col justify-center items-center">
               <Button
                 text={"Sign Up"}
                 onClick={() => setLoginModalOpen(true)}
               />
+              </div>
             </div>
           </div>
         </section>

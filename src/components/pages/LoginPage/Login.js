@@ -35,14 +35,14 @@ export const Login = () => {
       .then((data) => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.userId);
-        navigate("/match");
+        // navigate("/match");
       })
       .catch((err) => {
         console.error(err);
       });
   };
   return (
-    <div className="container max-w-full mx-auto md:py-24 px-6">
+    <div className="container max-w-full mx-auto md:py-10 px-8">
       <div className="max-w-sm mx-auto px-6">
         <div className="relative flex flex-wrap">
           <div className="w-full relative">

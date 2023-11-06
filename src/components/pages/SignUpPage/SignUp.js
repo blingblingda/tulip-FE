@@ -67,7 +67,7 @@ export const SignUp = () => {
   };
 
   return (
-    <div className="container max-w-full mx-auto md:py-24 px-6">
+    <div className="container max-w-full mx-auto md:py-10 px-8">
       <div className="max-w-sm mx-auto px-6">
         <div className="relative flex flex-wrap">
           <div className="w-full relative">
