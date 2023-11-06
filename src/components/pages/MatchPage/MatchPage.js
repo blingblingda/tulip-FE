@@ -172,19 +172,26 @@ export const MatchPage = () => {
     return <div>Loading...</div>;
   }
   return (
-    <>
-      <Header />
-      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-20 py-10 bg-base-200">
-        {matchedData.map((data) => (
-          <Pcard
-            key={data._id}
-            data={data}
-            onClick={() => openProfileModal(data)}
-          />
-        ))}
-        <Button text="ChatRoom" onClick={handleMatch} />
-      </main>
-      <Footer />
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-shrink-0">
+        <Header />
+      </div>
+      <div className="flex-1 bg-base-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-20 py-10 ">
+          {matchedData.map((data) => (
+            <Pcard
+              key={data._id}
+              data={data}
+              onClick={() => openProfileModal(data)}
+            />
+          ))}
+          <Button text="ChatRoom" onClick={handleMatch} />
+        </div>
+      </div>
+      <div className="flex-shrink-0">
+        <Footer />
+      </div>
+
       <Modal show={isModalOpen} onClick={closeProfileModal}>
         {selectedProfile && (
           <Profile
@@ -193,6 +200,6 @@ export const MatchPage = () => {
           />
         )}
       </Modal>
-    </>
+    </div>
   );
 };
