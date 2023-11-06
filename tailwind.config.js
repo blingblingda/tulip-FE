@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxLength: {
+        10: "10",
+      },
       colors: {
         "custom-plum": "#b80d54", // A custom primary color
         "custom-lightpink": "#fe66c5",

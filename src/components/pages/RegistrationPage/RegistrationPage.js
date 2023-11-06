@@ -20,6 +20,7 @@ const validateForm = ({
   relationIntent,
   selectedPassions,
   photoUrl,
+  bioContent,
 }) => {
   // Checking if any field is empty
   if (
@@ -32,7 +33,8 @@ const validateForm = ({
     !selectedState ||
     !genderPrefer ||
     !relationIntent ||
-    !photoUrl
+    !photoUrl ||
+    !bioContent
   ) {
     return { isValid: false, message: "All fields must be filled!" };
   }
@@ -92,6 +94,7 @@ export const RegistrationPage = () => {
   const [ageRange, setAgeRange] = useState({ min: 18, max: 65 });
   const [formError, setFormError] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
+  const [bioContent, setBioContent] = useState("");
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -135,6 +138,9 @@ export const RegistrationPage = () => {
       console.error("Failed to upload the image.", err);
     }
   };
+  const handleBioContent = (e) => {
+    setBioContent(e.target.value);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -155,6 +161,7 @@ export const RegistrationPage = () => {
       relationIntent,
       selectedPassions,
       photoUrl,
+      bioContent,
     });
 
     if (!validationResult.isValid) {
@@ -176,7 +183,10 @@ export const RegistrationPage = () => {
         passion: passionLabels,
         age_preference: ageRange,
         photo_url: photoUrl,
+        bio: bioContent,
       };
+
+      console.log(userInfo);
 
       fetch(
         `http://localhost:3001/api/profile/${localStorage.getItem("userId")}`,
@@ -213,6 +223,7 @@ export const RegistrationPage = () => {
     setAgeRange({ min: 18, max: 65 });
     setFormError("");
     setPhotoUrl("");
+    setBioContent("");
   };
 
   // if (file) {
@@ -355,6 +366,28 @@ export const RegistrationPage = () => {
                   />
                 </div>
               </div>
+
+              {/* Bio */}
+              <div className="sm:col-span-6">
+                <label
+                  htmlFor="lastName"
+                  className="block text-lg font-medium leading-6 text-gray-900"
+                >
+                  Bio
+                </label>
+                <div className="mt-2">
+                  <textarea
+                    name="bio"
+                    id="bio"
+                    maxLength="300"
+                    placeholder="Enter your bio. (max 50 words)"
+                    value={bioContent}
+                    onChange={(e) => handleBioContent(e)}
+                    className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  />
+                </div>
+              </div>
+
               {/* Gender */}
               <div className="sm:col-span-4">
                 <Gender onGenderChange={handleGenderOptionChange} />

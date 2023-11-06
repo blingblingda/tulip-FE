@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/tulip-192x192.png";
 import { Button } from "../UI/Button";
 import { Modal } from "./Modal";
@@ -6,6 +7,12 @@ import { Login } from "../pages/LoginPage/Login";
 
 export const Header = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <>
@@ -15,7 +22,11 @@ export const Header = () => {
           <h1 className="text-4xl pl-4 text-white">tulip</h1>
         </div>
         <div className="mr-7">
-          <Button text={"Login"} onClick={() => setLoginModalOpen(true)} />
+          {localStorage.getItem("token") ? (
+            <Button text={"Logout"} onClick={handleLogout} />
+          ) : (
+            <Button text={"Login"} onClick={() => setLoginModalOpen(true)} />
+          )}
         </div>
       </header>
 

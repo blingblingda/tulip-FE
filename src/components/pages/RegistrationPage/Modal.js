@@ -43,7 +43,11 @@ export const PassionsModal = ({ onPassionsChange }) => {
     }
   };
 
-  onPassionsChange(selectedPassions);
+  const handleSave = () => {
+    setSavedPassions(selectedPassions);
+    setModalOpen(false);
+    onPassionsChange(selectedPassions);
+  };
 
   return (
     <div>
@@ -111,10 +115,7 @@ export const PassionsModal = ({ onPassionsChange }) => {
                 <button
                   type="button"
                   className="bg-custom-plum text-white mt-3 w-full inline-flex justify-center rounded-full border border-gray-300 shadow-sm px-4 py-2 text-base font-medium text-gray-700 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm"
-                  onClick={() => {
-                    setSavedPassions(selectedPassions);
-                    setModalOpen(false);
-                  }}
+                  onClick={handleSave}
                 >
                   Save
                 </button>

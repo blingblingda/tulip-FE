@@ -6,6 +6,7 @@ import Logo from "../../../assets/tulip-32x32.png";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -19,6 +20,7 @@ export const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     const userData = {
       email: email,
       password: password,
@@ -35,10 +37,11 @@ export const Login = () => {
       .then((data) => {
         localStorage.setItem("token", data.token);
         localStorage.setItem("userId", data.userId);
-        // navigate("/match");
+        navigate("/match");
       })
       .catch((err) => {
-        console.error(err);
+        console.log(err.errors);
+        setError(err.message);
       });
   };
   return (
@@ -85,6 +88,7 @@ export const Login = () => {
                       bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
                     />
                   </div>
+                  {error && <div className="text-red-500">{error}</div>}
                   {/* Login button */}
                   <div className="flex justify-center items-center mt-6">
                     <Button text="Login" onClick={handleSubmit} type="submit" />
