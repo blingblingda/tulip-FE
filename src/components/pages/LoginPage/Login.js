@@ -26,24 +26,28 @@ export const Login = () => {
       password: password,
     };
 
-    fetch("http://localhost:3001/api/auth/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("userId", data.userId);
-        navigate("/match");
-      })
-      .catch((err) => {
-        console.log(err.errors);
-        setError(err.message);
+    try {
+      const response = await fetch("http://localhost:3001/api/auth/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
       });
+
+      if (!response.ok) {
+        throw new Error("Invalid username or password");
+      }
+
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.userId);
+      navigate("/match");
+    } catch (err) {
+      setError(err.message);
+    }
   };
+
   return (
     <div className="container max-w-full mx-auto md:py-10 px-8">
       <div className="max-w-sm mx-auto px-6">

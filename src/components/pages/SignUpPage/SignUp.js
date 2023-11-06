@@ -7,6 +7,7 @@ export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -27,6 +28,7 @@ export const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
     if (!isValidEmail(email)) {
       alert("Please enter a valid email!");
@@ -48,22 +50,26 @@ export const SignUp = () => {
       password: password,
     };
 
-    fetch("http://localhost:3001/api/profile/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("userId", data.userId);
-        navigate("/registration");
-      })
-      .catch((err) => {
-        console.error(err);
+    try {
+      const response = await fetch("http://localhost:3001/api/profile/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
       });
+
+      if (!response.ok) {
+        throw new Error("User already exists");
+      }
+
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("userId", data.userId);
+      navigate("/registration");
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -125,6 +131,27 @@ export const SignUp = () => {
                   </div>
 
                   {/* Feedback sections */}
+                  {error && (
+                    <div className="flex items-center py-1">
+                      <div className="bg-red-200 text-red-700 rounded-full p-1">
+                        <svg
+                          className="w-4 h-4"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            d="M6 18L18 6M6 6l12 12"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                          />
+                        </svg>
+                      </div>
+                      <span className="font-medium text-sm ml-3">{error}</span>
+                    </div>
+                  )}
+
                   <div className="flex items-center py-1">
                     <div
                       className={
