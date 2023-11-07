@@ -4,9 +4,13 @@ import { Footer } from "../../UI/Footer";
 import { Pcard } from "./Pcard";
 import { Profile } from "../ProfilePage/Profile";
 import { Modal } from "../../UI/Modal";
-import { Button } from "../../UI/Button";
 import { ChatBox } from "./ChatBox";
 import { socket } from "../../../socketConfig";
+import {
+  fetchAcceptedMatch,
+  fetchPotentialMatch,
+} from "../../services/MatchService";
+import { fetchUser } from "../../services/UserService";
 
 // const dummyData = [
 //   {
@@ -101,22 +105,28 @@ export const MatchPage = () => {
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
-    fetch(`http://localhost:3001/api/potential_match/${userId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": token,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setMatchedData(data);
-        setLoading(false);
-      })
-      .catch((err) => {
+    async function fetchData() {
+      try {
+        const acceptedMatch = await fetchAcceptedMatch(userId, token);
+        if (acceptedMatch) {
+          const userProfile = fetchUser(userId, token);
+          socket.emit("joinRoom", {
+            matchId: acceptedMatch.conversation_id,
+            userName: userProfile.name,
+          });
+          setUserName(userProfile.name);
+          setJoined(true);
+        } else {
+          const potentialMatches = await fetchPotentialMatch(userId, token);
+          setMatchedData(potentialMatches);
+          setLoading(false);
+        }
+      } catch (err) {
         console.error(err);
         setLoading(false);
-      });
+      }
+    }
+    fetchData();
   }, []);
 
   const openProfileModal = (profileData) => {
@@ -127,41 +137,6 @@ export const MatchPage = () => {
   const closeProfileModal = () => {
     setModalOpen(false);
     setSelectedProfile(null);
-  };
-
-  const handleMatch = async () => {
-    // fetch matchId from server...
-    const dummyMatch = {
-      matchId: "123",
-      fromId: "6534934d016ba221aa4a73fe",
-      toId: "65335d5673204fcfb8dff945",
-      status: "accepted",
-    };
-
-    fetch(`http://localhost:3001/api/profile/${userId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": token,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (
-          dummyMatch.matchId &&
-          (dummyMatch.fromId === userId || dummyMatch.toId === userId)
-        ) {
-          socket.emit("joinRoom", {
-            matchId: dummyMatch.matchId,
-            userName: data.name,
-          });
-          setUserName(data.name);
-          setJoined(true);
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-      });
   };
 
   if (joined) {
@@ -177,7 +152,7 @@ export const MatchPage = () => {
         <Header />
       </div>
       <div className="flex-1 bg-base-200">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-20 py-10 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 px-20 py-10 ">
           {matchedData.map((data) => (
             <Pcard
               key={data._id}
@@ -185,7 +160,6 @@ export const MatchPage = () => {
               onClick={() => openProfileModal(data)}
             />
           ))}
-          <Button text="ChatRoom" onClick={handleMatch} />
         </div>
       </div>
       <div className="flex-shrink-0">
