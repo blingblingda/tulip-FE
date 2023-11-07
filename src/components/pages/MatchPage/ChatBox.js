@@ -48,12 +48,12 @@ export const ChatBox = ({ username }) => {
                   <div
                     key={index}
                     className={`col-start-${
-                      msg.user === username ? 1 : 6
-                    } col-end-${msg.user === username ? 8 : 13} p-3 rounded-lg`}
+                      msg.user === username ? 6 : 1
+                    } col-end-${msg.user === username ? 13 : 8} p-3 rounded-lg`}
                   >
                     <div
                       className={`flex ${
-                        msg.user === username ? "flex-row" : "flex-row-reverse"
+                        msg.user === username ? "flex-row-reverse" : "flex-row"
                       } items-center`}
                     >
                       <div className="flex items-center justify-center h-10 w-10 rounded-full bg-custom-lightpink flex-shrink-0">
@@ -61,7 +61,7 @@ export const ChatBox = ({ username }) => {
                       </div>
                       <div
                         className={`relative ${
-                          msg.user === username ? "ml-3" : "mr-3"
+                          msg.user === username ? "mr-3" : "ml-3"
                         } text-sm bg-white py-2 px-4 shadow rounded-xl`}
                       >
                         <div>{msg.content}</div>
