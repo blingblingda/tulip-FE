@@ -9,5 +9,5 @@ export async function fetchUser(userId, token) {
       },
     }
   );
-  return userProfile;
+  return userProfile.json();
 }

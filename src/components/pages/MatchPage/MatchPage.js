@@ -109,12 +109,13 @@ export const MatchPage = () => {
       try {
         const acceptedMatch = await fetchAcceptedMatch(userId, token);
         if (acceptedMatch) {
-          const userProfile = fetchUser(userId, token);
+          const userData = await fetchUser(userId, token);
+
           socket.emit("joinRoom", {
             matchId: acceptedMatch.conversation_id,
-            userName: userProfile.name,
+            userName: userData.name,
           });
-          setUserName(userProfile.name);
+          setUserName(userData.name);
           setJoined(true);
         } else {
           const potentialMatches = await fetchPotentialMatch(userId, token);
