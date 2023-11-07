@@ -584,14 +584,20 @@ export const RegistrationPage = () => {
 
         <div className="py-3">
           <PassionsModal onPassionsChange={handlePassionsChange} />
-        </div>
+          {formError && <div className="mt-4 text-red-600">{formError}</div>}
+          <div className="mt-8 mb-16 md:mb-8 lg:mb-8 flex items-center justify-end gap-x-6">
 
-        <div className="mt-6 flex items-center justify-end gap-x-6">
           <Button text={"Cancel"} type="button" onClick={handleCancel} />
           <Button text={"Save"} type="submit" disabled={formError !== ""} />
         </div>
+        </div>
 
-        {formError && <div className="mt-4 text-red-600">{formError}</div>}
+        {/* <div className="mt-6 flex items-center justify-end gap-x-6">
+          <Button text={"Cancel"} type="button" onClick={handleCancel} />
+          <Button text={"Save"} type="submit" disabled={formError !== ""} />
+        </div> */}
+
+        {/* {formError && <div className="mt-4 text-red-600">{formError}</div>} */}
       </form>
       <Footer />
     </div>

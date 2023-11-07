@@ -210,7 +210,7 @@ export const HomePage = () => {
         {/* FAQ */}
         <Accordion />
         {/* Download */}
-        <section className="flex flex-col items-center my-10">
+        <section className="flex flex-col items-center mt-10 mb-20">
           <div className="flex justify-center text-center text-5xl py-10">
             <h2>Download for mobile</h2>
           </div>
