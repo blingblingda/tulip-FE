@@ -19,6 +19,6 @@ export async function fetchAcceptedMatch(userId, token) {
     user_2: "65335d5673204fcfb8dff945",
     conversation_id: "123",
   };
-  // return dummyMatch;
-  return null;
+  return dummyMatch;
+  // return null;
 }
