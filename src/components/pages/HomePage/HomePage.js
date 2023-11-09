@@ -11,27 +11,36 @@ import { Accordion } from "./Accordion";
 import Download from "../../../assets/download.jpg";
 import { Modal } from "../../UI/Modal";
 import { SignUp } from "../SignUpPage/SignUp";
+import Loader from '../LoadingScreen/Loader';
 
 export const HomePage = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
+  const [isLoading, setLoading] = useState(false); // Start without loading
   const navigate = useNavigate();
 
-  // This effect handles the redirection after login.
-  useEffect(() => {
-    const userToken = localStorage.getItem('token');
-    const shouldRedirect = localStorage.getItem('shouldRedirect');
-
-    if (userToken && shouldRedirect) {
-      // Clear the flag to avoid redirecting on subsequent visits.
-      localStorage.removeItem('shouldRedirect');
-      navigate('/match');
-    }
-  }, [navigate]);
-
-  // This function checks if the user is authenticated
+  // Check if the user is authenticated
   const isAuthenticated = () => {
     return !!localStorage.getItem('token');
   };
+
+  useEffect(() => {
+    // Only perform the redirect if the user is authenticated
+    if (isAuthenticated()) {
+      const shouldRedirect = localStorage.getItem('shouldRedirect');
+      if (shouldRedirect) {
+        setLoading(true); // Start loading while preparing to redirect
+        localStorage.removeItem('shouldRedirect');
+        navigate('/match');
+      }
+    } else {
+      setLoading(false); // Ensure loading is false if not authenticated
+    }
+  }, [navigate]);
+
+  // If the loading state is true, render the Loader component
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div>
@@ -222,7 +231,7 @@ export const HomePage = () => {
         {/* FAQ */}
         <Accordion />
         {/* Download */}
-        <section className="flex flex-col items-center mt-10 mb-20">
+        <section className="flex flex-col items-center mt-10 mb-24">
           <div className="flex justify-center text-center text-5xl py-10">
             <h2>Download for mobile</h2>
           </div>

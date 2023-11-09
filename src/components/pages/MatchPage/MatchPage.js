@@ -11,6 +11,7 @@ import {
   fetchPotentialMatch,
 } from "../../services/MatchService";
 import { fetchUser } from "../../services/UserService";
+import Loader from "../LoadingScreen/Loader";
 
 // const dummyData = [
 //   {
@@ -145,7 +146,11 @@ export const MatchPage = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Loader />
+      </div>
+    );
   }
   return (
     <div className="min-h-screen flex flex-col">

@@ -20,7 +20,7 @@ export const Footer = () => {
 
   // Basic footer content for non-authenticated users
   const basicFooterContent = (
-    <div className="text-center p-2 text-gray-600">
+    <div className="text-center p-6 text-gray-600">
       <p>© {new Date().getFullYear()} Tulip. All rights reserved.</p>
     </div>
   );
