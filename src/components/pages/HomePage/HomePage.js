@@ -14,14 +14,24 @@ import { SignUp } from "../SignUpPage/SignUp";
 
 export const HomePage = () => {
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
-  const [userToken, setUserToken] = useState(localStorage.getItem("token"));
   const navigate = useNavigate();
 
+  // This effect handles the redirection after login.
   useEffect(() => {
-    if (userToken) {
-      navigate("/match");
+    const userToken = localStorage.getItem('token');
+    const shouldRedirect = localStorage.getItem('shouldRedirect');
+
+    if (userToken && shouldRedirect) {
+      // Clear the flag to avoid redirecting on subsequent visits.
+      localStorage.removeItem('shouldRedirect');
+      navigate('/match');
     }
-  }, [userToken]);
+  }, [navigate]);
+
+  // This function checks if the user is authenticated
+  const isAuthenticated = () => {
+    return !!localStorage.getItem('token');
+  };
 
   return (
     <div>
@@ -38,12 +48,14 @@ export const HomePage = () => {
             <div>
               <h1 className="text-8xl font-bold text-black">tulip</h1>
               <p className="py-6">Where connections blossom.</p>
+              {!isAuthenticated() && (
               <div className="flex flex-col justify-center items-center">
               <Button
                 text={"Sign Up"}
                 onClick={() => setLoginModalOpen(true)}
               />
               </div>
+              )}
             </div>
           </div>
         </section>

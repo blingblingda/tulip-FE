@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../UI/Button";
 import Logo from "../../../assets/tulip-32x32.png";
+import Loader from "../LoadingScreen/Loader";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
@@ -18,13 +20,43 @@ export const Login = () => {
     }
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   setError("");
+
+  //   try {
+  //     const response = await fetch("http://localhost:3001/api/auth/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ email, password }),
+  //     });
+
+  //     // Wait for 3 seconds to simulate the loading process
+  //     await new Promise(resolve => setTimeout(resolve, 1500));
+
+  //     if (!response.ok) {
+  //       throw new Error("Invalid username or password");
+  //     }
+
+  //     const data = await response.json();
+  //     localStorage.setItem("token", data.token);
+  //     localStorage.setItem("userId", data.userId);
+  //     localStorage.setItem('justLoggedIn', 'true'); // Set a flag for just logged in
+  //     navigate("/match");
+  //   } catch (err) {
+  //     setError(err.message);
+  //   } finally {
+  //     // Hide the loader after 3 seconds or if there's an error
+  //     setLoading(false);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setError("");
-    const userData = {
-      email: email,
-      password: password,
-    };
 
     try {
       const response = await fetch("http://localhost:3001/api/auth/", {
@@ -32,8 +64,11 @@ export const Login = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(userData),
+        body: JSON.stringify({ email, password }),
       });
+
+      // Wait for 1.5 seconds to simulate the loading process
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
       if (!response.ok) {
         throw new Error("Invalid username or password");
@@ -42,11 +77,20 @@ export const Login = () => {
       const data = await response.json();
       localStorage.setItem("token", data.token);
       localStorage.setItem("userId", data.userId);
-      navigate("/match");
+      localStorage.setItem('justLoggedIn', 'true'); // Set a flag for just logged in
+      navigate("/match"); // Navigate to the match page
     } catch (err) {
       setError(err.message);
+    } finally {
+      setLoading(false); // Hide the loader
     }
   };
+
+  // Conditionally render the Loader or the login form based on the loading state
+  if (loading) {
+    return <Loader />;
+  }
+  
 
   return (
     <div className="container max-w-full mx-auto md:py-10 px-8">

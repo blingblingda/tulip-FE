@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../../UI/Button";
 import Logo from "../../../assets/tulip-32x32.png";
+import Loader from "../LoadingScreen/Loader";
 
 export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -30,20 +32,24 @@ export const SignUp = () => {
     e.preventDefault();
     setError("");
 
+    if (!email) {
+      setError("Email is required.");
+      return;
+    }
     if (!isValidEmail(email)) {
-      alert("Please enter a valid email!");
+      setError("Please enter a valid email!");
       return;
     }
-
     if (password.length < 8) {
-      alert("Password should be at least 8 characters!");
+      setError();
+      return;
+    }
+    if (password !== confirmPassword) {
+      setError();
       return;
     }
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+    setLoading(true); // Set loading to true only after validation passes
 
     const userData = {
       email: email,
@@ -59,6 +65,9 @@ export const SignUp = () => {
         body: JSON.stringify(userData),
       });
 
+       // Wait for 3 seconds to simulate the loading process
+       await new Promise(resolve => setTimeout(resolve, 3000));
+
       if (!response.ok) {
         throw new Error("User already exists");
       }
@@ -69,8 +78,19 @@ export const SignUp = () => {
       navigate("/registration");
     } catch (err) {
       setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="fixed inset-0 bg-white bg-opacity-75 flex justify-center items-center">
+        <Loader />
+      </div>
+    );
+  }
+
 
   return (
     <div className="container max-w-full mx-auto md:py-10 px-8">
