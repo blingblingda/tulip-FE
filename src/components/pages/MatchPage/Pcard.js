@@ -1,36 +1,42 @@
 import React from "react";
-import { TERipple } from "tw-elements-react";
 import { Button } from "../../UI/Button";
 
-export const Pcard = (props): JSX.Element => {
+export const Pcard = (props) => {
+  // Use avatarUrl from props
+  const avatarUrl = "https://tecdn.b-cdn.net/img/new/avatars/2.webp";
+
   return (
     <div
-      className="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]"
+      className="block rounded-lg bg-white shadow-lg overflow-hidden text-center"
       onClick={props.onClick}
     >
-      <TERipple>
-        <div className="relative overflow-hidden bg-cover bg-no-repeat">
-          <img className="rounded-t-lg" src={props.data.url} alt="" />
-          <a href="#!">
-            <div className="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"></div>
-          </a>
+      {/* Top padding should be half the height of the avatar to prevent it from being cropped */}
+      <div className="pt-16 pb-2 px-4">
+        {/* Avatar Image */}
+        <div className="flex justify-center -mt-16">
+          <img
+            src={avatarUrl}
+            alt="Avatar"
+            className="w-32 h-32 rounded-full border-4 border-white bg-cover" // Adjust the size as needed
+          />
         </div>
-      </TERipple>
+      </div>
 
       <div className="p-4">
-        <h5 className="mb-4 text-xl font-medium leading-tight text-neutral-800">
+        <h5 className="mb-1 text-xl font-medium leading-tight text-neutral-800">
           {props.data.name}
         </h5>
-        <ul>
-          <li className="mb-4 text-base text-neutral-600">
-            {props.data.age}, {props.data.gender}, {props.data.city}
-          </li>
-          <li className="mb-4 text-base text-neutral-600">
-            {props.data.passion.map((p) => p).join(", ")}
-          </li>
-        </ul>
+        <p className="mb-2 text-base text-neutral-600">
+          {props.data.age}, {props.data.gender}, {props.data.city}
+        </p>
+        {/* <p className="mb-2 text-base text-neutral-600">
+          {props.data.passion.join(", ")}
+        </p> */}
 
-        <Button text={"More"} />
+        {/* Button centered with flex container */}
+        <div className="flex justify-center">
+          <Button text={"More"} />
+        </div>
       </div>
     </div>
   );
