@@ -1,7 +1,20 @@
 import React from "react";
 import { Button } from "../../UI/Button";
+import { sendInvite } from "../../services/MatchService";
 
 export const Profile = ({ profileData, closeProfileModal }) => {
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+
+  const handleInviteSend = async () => {
+    try {
+      const inviteSent = await sendInvite(userId, profileData._id, token);
+      console.log(inviteSent);
+    } catch (err) {
+      alert(err.message);
+    }
+  };
+
   return (
     <div className="bg-gray-100 p-4 md:p-8">
       {/* First Photo Card */}
@@ -44,7 +57,8 @@ export const Profile = ({ profileData, closeProfileModal }) => {
 
       {/* Close Modal */}
       <div className="flex flex-col items-center justify-center">
-        <Button text={"Send invite"} onClick={closeProfileModal} />
+        <Button text={"close"} onClick={closeProfileModal} />
+        <Button text={"Send invite"} onClick={handleInviteSend} />
       </div>
     </div>
   );

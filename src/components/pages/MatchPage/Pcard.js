@@ -7,16 +7,13 @@ export const Pcard = (props) => {
       className="block rounded-lg bg-white shadow-lg overflow-hidden text-center"
       onClick={props.onClick}
     >
-      {/* Top padding should be half the height of the avatar to prevent it from being cropped */}
-      <div className="pt-16 pb-2 px-4">
-        {/* Avatar Image */}
-        <div className="flex justify-center mt-16">
-          <img
-            src={props.data.photo_url}
-            alt="Avatar"
-            className="w-32 h-32 rounded-full border-4 border-white object-cover" // Adjust the size as needed
-          />
-        </div>
+      {/* Avatar Image */}
+      <div className="flex justify-center mt-6">
+        <img
+          src={props.data.photo_url}
+          alt="Avatar"
+          className="w-32 h-32 rounded-full border-4 border-white object-cover"
+        />
       </div>
 
       <div className="p-4">
