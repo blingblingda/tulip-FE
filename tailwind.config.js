@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         "custom-plum": "#b80d54", // A custom primary color
         "custom-lightpink": "#fe66c5",
+        'custom-toggle-off': '#6d5b98',
         // plum: "#7c0c34",
         // "magenta" : "#b80d54",
         // hotmag: "#ff309d",

@@ -5,6 +5,7 @@ import { RegistrationPage } from "./components/pages/RegistrationPage/Registrati
 import { MatchPage } from "./components/pages/MatchPage/MatchPage";
 import { SignUp } from "./components/pages/SignUpPage/SignUp";
 import { NotFoundPage } from "./components/pages/NotFoundPage/NotFoundPage";
+import { InvitesPage } from "./components/pages/InvitesPage/InvitesPage"
 import Loader from "./components/pages/LoadingScreen/Loader";
 
 
@@ -17,6 +18,7 @@ export const App = () => {
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/match" element={<MatchPage />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/invites" element={<InvitesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
