@@ -108,6 +108,7 @@ export const MatchPage = () => {
           <Profile
             profileData={selectedProfile}
             closeProfileModal={closeProfileModal}
+            showInviteButton={true}
           />
         )}
       </Modal>
