@@ -76,7 +76,7 @@ const handleDecline = (inviteId) => {
 
       {/* Main content area */}
       <div className="flex-grow flex flex-col items-center justify-center p-4">
-        <div className="flex-grow w-full max-w-2xl mx-auto bg-white shadow-md rounded-lg overflow-auto mt-2 mb-20">
+        <div className="flex-grow w-full max-w-7xl mx-auto bg-white shadow-md rounded-lg overflow-auto mt-2 mb-20">
           <div className="p-4 sm:p-6 md:p-8">
             <h1 className="text-2xl font-semibold text-center">
               {isToggleOn ? "Sent Invites" : "Received Invites"}
