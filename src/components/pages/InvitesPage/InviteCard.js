@@ -92,6 +92,7 @@ export const InviteCard = ({ invite, isReceived }) => {
           <Profile
             profileData={selectedProfile}
             closeProfileModal={closeProfileModal}
+            showInviteButton={false}
           />
         )}
       </Modal>
