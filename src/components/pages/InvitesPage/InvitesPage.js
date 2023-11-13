@@ -1,51 +1,50 @@
-// InvitesPage.js
-
 import React, { useState, useEffect } from "react";
 import { Header } from "../../UI/Header";
 import { Footer } from "../../UI/Footer";
-import Loader from "../LoadingScreen/Loader";
 import { InviteCard } from "./InviteCard";
-// Import additional services if you have them for fetching invites
+import { fetchReceivedInvites } from "../../services/InviteService";
 
 export const InvitesPage = () => {
   const [receivedInvites, setReceivedInvites] = useState([]);
   const [sentInvites, setSentInvites] = useState([]);
   const [isToggleOn, setIsToggleOn] = useState(false);
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
 
   // Dummy data for received and sent invites
-const dummyReceivedInvites = [
-  { id: 1, name: "John Doe", status: 'pending' },
-  { id: 2, name: "Jane Smith", status: 'pending' },
-];
+  // const dummyReceivedInvites = [
+  //   { id: 1, name: "John Doe", status: "pending" },
+  //   { id: 2, name: "Jane Smith", status: "pending" },
+  // ];
 
-const dummySentInvites = [
-  { id: 3, name: "Michael Johnson", status: 'accepted' },
-  { id: 4, name: "Emily Davis", status: 'pending' },
-];
+  const dummySentInvites = [
+    { id: 3, name: "Michael Johnson", status: "accepted" },
+    { id: 4, name: "Emily Davis", status: "pending" },
+  ];
 
-// Handlers for the invite actions (placeholders for now)
-const handleAccept = (inviteId) => {
-  console.log("Accepted invite:", inviteId);
-  // Here you would handle the accept logic
-};
-
-const handleDecline = (inviteId) => {
-  console.log("Declined invite:", inviteId);
-  // Here you would handle the decline logic
-};
-
-  // Replace with your actual fetch invites functions
-  const fetchReceivedInvites = async () => {
-    // Fetch logic for received invites
+  // Handlers for the invite actions (placeholders for now)
+  const handleAccept = (inviteId) => {
+    console.log("Accepted invite:", inviteId);
+    // Here you would handle the accept logic
   };
+
+  const handleDecline = (inviteId) => {
+    console.log("Declined invite:", inviteId);
+    // Here you would handle the decline logic
+  };
+
   const fetchSentInvites = async () => {
     // Fetch logic for sent invites
   };
 
   useEffect(() => {
-    fetchReceivedInvites();
-    fetchSentInvites();
+    async function fetchData() {
+      const response = await fetchReceivedInvites(userId, token);
+      setReceivedInvites(response);
+    }
+    fetchData();
+    // fetchSentInvites();
   }, []);
 
   const handleToggle = () => {
@@ -69,7 +68,11 @@ const handleDecline = (inviteId) => {
         {" "}
         {/* Adjust the background as needed */}
         <label className="relative inline-flex items-center cursor-pointer">
-        <input type="checkbox" className="sr-only peer" onChange={handleToggle} />
+          <input
+            type="checkbox"
+            className="sr-only peer"
+            onChange={handleToggle}
+          />
           <div className="group peer ring-0 bg-black from-black-100 via-black-400 to-black-500 rounded-full outline-none duration-300 after:duration-300 w-24 h-12 shadow-md peer-checked:bg-gradient-to-tr from-custom-lightpink via-custom-plum to-custom-plum peer-focus:outline-none after:content-['📨'] after:rounded-full after:absolute after:bg-gray-50 after:outline-none after:h-10 after:w-10 after:top-1 after:left-1 after:-rotate-180 after:flex after:justify-center after:items-center peer-checked:after:translate-x-12 peer-checked:after:content-['📩'] peer-hover:after:scale-95 peer-checked:after:rotate-0"></div>
         </label>
       </div>
@@ -84,11 +87,15 @@ const handleDecline = (inviteId) => {
             <div>
               {isToggleOn
                 ? dummySentInvites.map((invite) => (
-                    <InviteCard key={invite.id} invite={invite} isReceived={false} />
-                  ))
-                : dummyReceivedInvites.map((invite) => (
                     <InviteCard
                       key={invite.id}
+                      invite={invite}
+                      isReceived={false}
+                    />
+                  ))
+                : receivedInvites.map((invite) => (
+                    <InviteCard
+                      key={invite._id}
                       invite={invite}
                       onAccept={handleAccept}
                       onDecline={handleDecline}
@@ -99,7 +106,6 @@ const handleDecline = (inviteId) => {
           </div>
         </div>
       </div>
-
 
       <Footer />
     </div>
