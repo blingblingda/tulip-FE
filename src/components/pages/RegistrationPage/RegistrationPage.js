@@ -246,12 +246,11 @@ export const RegistrationPage = () => {
         <div className="space-y-12">
           {/* Profile title */}
           <div className="border-b border-gray-900/10 pb-12">
-            <h1 className="text-6xl font-bold text-black text-center">
-              Profile
+            <h1 className="text-5xl font-bold text-black text-center">
+              Profile 👤
             </h1>
             <p className="mt-1 text-sm leading-6 text-gray-600 text-center">
-              This information will be displayed publicly so be careful what you
-              share.
+            "Get noticed for being you! Complete your profile to share your story with everyone."
             </p>
           </div>
           {/* Personal Info */}
@@ -588,13 +587,6 @@ export const RegistrationPage = () => {
             <Button text={"Save"} type="submit" disabled={formError !== ""} />
           </div>
         </div>
-
-        {/* <div className="mt-6 flex items-center justify-end gap-x-6">
-          <Button text={"Cancel"} type="button" onClick={handleCancel} />
-          <Button text={"Save"} type="submit" disabled={formError !== ""} />
-        </div> */}
-
-        {/* {formError && <div className="mt-4 text-red-600">{formError}</div>} */}
       </form>
       <Footer />
     </div>

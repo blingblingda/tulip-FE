@@ -74,28 +74,54 @@ export const MatchPage = () => {
   }
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="flex-shrink-0">
-        <Header />
-      </div>
+      {/* Header */}
+      <Header />
+
+      {/* Main content */}
       <div className="flex-1 bg-base-200">
-        {/* Button centered with flex container */}
-        <div className="flex justify-center py-4">
-          <Button text={"Invites"} onClick={handleInvitesClick} />
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 px-20 py-10 mx-auto max-w-screen-xl">
-          {matchedData.map((data) => (
-            <Pcard
-              key={data._id}
-              data={data}
-              onClick={() => openProfileModal(data)}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="flex-shrink-0">
-        <Footer />
+        <section className="bg-white dark:bg-gray-900">
+          <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            {/* Invites Button */}
+            <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+              <p className="mb-4 text-sm tracking-tight font-extrabold text-gray-400 dark:text-white">
+                Discover your connections – access your invites here.
+              </p>
+              <button
+                className="bg-primary-700 text-white font-bold py-2 px-4 rounded animate-pulse"
+                onClick={handleInvitesClick}
+              >
+                Invites
+              </button>
+            </div>
+
+            <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+              <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                Find Your Match ✨
+              </h2>
+              <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                Each profile is a new chapter waiting to be read – will you
+                start the story with a chat invite?
+              </p>
+            </div>
+
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-20 py-10">
+              {matchedData.map((data) => (
+                <Pcard
+                  key={data._id}
+                  data={data}
+                  onClick={() => openProfileModal(data)}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
       </div>
 
+      {/* Footer */}
+      <Footer />
+
+      {/* Profile Modal */}
       <Modal show={isModalOpen} onClick={closeProfileModal}>
         {selectedProfile && (
           <Profile
@@ -108,3 +134,38 @@ export const MatchPage = () => {
     </div>
   );
 };
+//     <div className="min-h-screen flex flex-col">
+//       <div className="flex-shrink-0">
+//         <Header />
+//       </div>
+//       <div className="flex-1 bg-base-200">
+//         {/* Button centered with flex container */}
+//         <div className="flex justify-center py-4">
+//           <Button text={"Invites"} onClick={handleInvitesClick} />
+//         </div>
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 px-20 py-10 mx-auto max-w-screen-xl">
+//           {matchedData.map((data) => (
+//             <Pcard
+//               key={data._id}
+//               data={data}
+//               onClick={() => openProfileModal(data)}
+//             />
+//           ))}
+//         </div>
+//       </div>
+//       <div className="flex-shrink-0">
+//         <Footer />
+//       </div>
+
+//       <Modal show={isModalOpen} onClick={closeProfileModal}>
+//         {selectedProfile && (
+//           <Profile
+//             profileData={selectedProfile}
+//             closeProfileModal={closeProfileModal}
+//             showInviteButton={true}
+//           />
+//         )}
+//       </Modal>
+//     </div>
+//   );
+// };

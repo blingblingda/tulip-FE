@@ -37,6 +37,7 @@ export const HomePage = () => {
     }
   }, [navigate]);
 
+
   // If the loading state is true, render the Loader component
   if (isLoading) {
     return <Loader />;
@@ -46,28 +47,6 @@ export const HomePage = () => {
     <div>
       <Header />
       <main className="mx-auto">
-        {/* Hero */}
-        {/* <section className="hero min-h-100 bg-base-200">
-          <div className="hero-content flex-col lg:flex-row">
-            <img
-              src={ScreenShot}
-              className="lg:w-80 md:w-32 rounded-lg shadow-2xl"
-              alt="screenshot"
-            />
-            <div>
-              <h1 className="text-8xl font-bold text-black">tulip</h1>
-              <p className="py-6">Where connections blossom.</p>
-              {!isAuthenticated() && (
-              <div className="flex flex-col justify-center items-center">
-              <Button
-                text={"Sign Up"}
-                onClick={() => setLoginModalOpen(true)}
-              />
-              </div>
-              )}
-            </div>
-          </div>
-        </section> */}
         <section className="bg-base-200 dark:bg-gray-900">
           <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
             {/* Alert for new sign up */}
@@ -108,7 +87,7 @@ export const HomePage = () => {
               <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                 <button
                   onClick={() => setLoginModalOpen(true)}
-                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
                 >
                   Sign Up
                   {/* Arrow icon */}
@@ -374,12 +353,12 @@ export const HomePage = () => {
 
         {/* Download */}
         {/* Download */}
-        <section className="flex flex-col items-center mt-12 mb-46">
+        <section className="flex flex-col items-center mt-12 md:mb-40 mb-48 sm:mb-36">
           <div className="text-5xl py-10 text-center">
             <h2>Download for mobile 📲</h2>
           </div>
           <button
-            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+            className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
             onClick={() => document.getElementById("my_modal_5").showModal()}
           >
             Download
@@ -399,7 +378,7 @@ export const HomePage = () => {
               <div className="modal-action">
                 <button
                   type="button"
-                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
                   onClick={() => document.getElementById("my_modal_5").close()}
                 >
                   Close

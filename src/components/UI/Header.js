@@ -24,9 +24,9 @@ export const Header = () => {
           </a>
           <div className="flex items-center lg:order-2">
             {localStorage.getItem("token") ? (
-              <Button text={"Logout"} onClick={handleLogout} className="text-white bg-primary-800 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-6 py-3 mr-2 dark:bg-primary-800 dark:hover:bbg-primary-900 focus:outline-none dark:focus:ring-primary-800" />
+              <Button text={"Logout"} onClick={handleLogout} className="text-white bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-6 py-3 mr-2 dark:bg-primary-700 dark:hover:bbg-primary-900 focus:outline-none dark:focus:ring-primary-700" />
             ) : (
-              <button onClick={() => setLoginModalOpen(true)} className="text-white bg-primary-800 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-6 py-3 mr-2 dark:bg-primary-800 dark:hover:bg-primary-900 focus:outline-none dark:focus:ring-primary-800">Log In</button>
+              <button onClick={() => setLoginModalOpen(true)} className="text-white bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-6 py-3 mr-2 dark:bg-primary-700 dark:hover:bg-primary-900 focus:outline-none dark:focus:ring-primary-700">Log In</button>
             )}
           </div>
         </div>

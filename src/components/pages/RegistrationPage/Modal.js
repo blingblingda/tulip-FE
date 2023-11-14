@@ -52,13 +52,13 @@ export const PassionsModal = ({ onPassionsChange }) => {
   return (
     <div>
       <button
-        className="button leading-5 text-md text-white font-sans p-2 rounded"
+        className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
         onClick={(e) => {
           e.preventDefault();
           setModalOpen(true);
         }}
       >
-        + Passions
+        Passions 💡
       </button>
       {savedPassions.length > 0 && (
         <div className="mt-4">
@@ -114,14 +114,14 @@ export const PassionsModal = ({ onPassionsChange }) => {
               <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 <button
                   type="button"
-                  className="bg-custom-plum text-white mt-3 w-full inline-flex justify-center rounded-full border border-gray-300 shadow-sm px-4 py-2 text-base font-medium text-gray-700 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm"
+                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 mt-3 w-full sm:mt-0 sm:w-auto"
                   onClick={handleSave}
                 >
                   Save
                 </button>
                 <button
                   type="button"
-                  className="mt-3 w-full inline-flex justify-center rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm"
+                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-700 rounded-lg border border-gray-300 shadow-sm bg-white hover:bg-gray-50 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 mt-3 w-full sm:mt-0 sm:w-auto"
                   onClick={() => setModalOpen(false)}
                 >
                   Cancel
