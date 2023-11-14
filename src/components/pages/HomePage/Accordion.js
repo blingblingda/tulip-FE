@@ -1,174 +1,78 @@
+
 import React, { useState } from "react";
-import { TECollapse } from "tw-elements-react";
 
 export const Accordion = (): JSX.Element => {
   const [activeElement, setActiveElement] = useState("");
 
   const handleClick = (value: string) => {
-    if (value === activeElement) {
-      setActiveElement("");
-    } else {
-      setActiveElement(value);
-    }
+    setActiveElement(value === activeElement ? "" : value);
   };
 
+  const faqData = [
+    {
+      question: "How Does the One Connection at a Time Feature Work?",
+      answer:
+        "Once you match with someone on Tulip, you can focus solely on that individual, promoting more meaningful conversations and connections. You won't be able to make another connection until you decide to move on or the connection naturally fades, ensuring a dedicated and focused dating experience.",
+    },
+    {
+      question: "Is Tulip Safe to Use?",
+      answer: "Safety is our top priority. Tulip incorporates robust security features and protocols to ensure the privacy and safety of our users. We encourage a respectful and kind interaction space and have measures in place to report and block malicious users."
+    },
+    {
+      question: "How Do I Set Up My Profile on Tulip?",
+      answer: "Setting up your profile is simple. Download the Tulip app, follow the on-screen instructions to create an account, and fill in your profile information. You can customize your profile to showcase your personality, interests, and what you’re looking for in a connection."
+    },
+    {
+      question: "What type of relationships does Tulip promote?",
+      answer: "Tulip encourages users to form serious and meaningful one-to-one relationships based on honesty and deep connection. Our platform is tailored to support individuals seeking committed partnerships and those who value authenticity and genuine interactions."
+    }
+    
+    // ... Add other FAQs here
+  ];
+
   return (
-    <div id="accordionExample">
-      <div className="mx-auto text-center md:max-w-xl lg:max-w-3xl py-20">
-        <h2 className="mb-6 text-5xl font-bold">FAQ</h2>
-      </div>
-
-      <div className="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-        <h2 className="mb-0" id="headingOne">
-          <button
-            className={`${
-              activeElement === "element1" &&
-              `text-primary [box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:!text-primary-400 dark:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]`
-            } group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white`}
-            type="button"
-            onClick={() => handleClick("element1")}
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
-            How Does the One Connection at a Time Feature Work?
-            <span
-              className={`${
-                activeElement === "element1"
-                  ? `rotate-[-180deg] -mr-1`
-                  : `rotate-0 fill-[#212529] dark:fill-white`
-              } ml-auto h-5 w-5 shrink-0 fill-[#336dec] transition-transform duration-200 ease-in-out motion-reduce:transition-none dark:fill-blue-300`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
-              </svg>
-            </span>
-          </button>
+    <section className="bg-white dark:bg-gray-900">
+      <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+        <h2 className="mb-8 text-4xl tracking-tight text-center font-extrabold text-gray-900 dark:text-white">
+          Frequently Asked Questions 🤔
         </h2>
-        <TECollapse
-          show={activeElement === "element1"}
-          className="!mt-0 !rounded-b-none !shadow-none"
-        >
-          <div className="px-5 py-4">
-            Once you match with someone on Tulip, you can focus solely on that
-            individual, promoting more meaningful conversations and connections.
-            You won't be able to make another connection until you decide to
-            move on or the connection naturally fades, ensuring a dedicated and
-            focused dating experience.
-          </div>
-        </TECollapse>
-      </div>
-
-      <div className="rounded-none border border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-        <h2 className="mb-0" id="headingTwo">
-          <button
-            className={`${
-              activeElement === "element2" &&
-              `text-primary [box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:!text-primary-400 dark:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]`
-            } group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white`}
-            type="button"
-            onClick={() => handleClick("element2")}
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
-            Is Tulip Safe to Use?
-            <span
-              className={`${
-                activeElement === "element2"
-                  ? `rotate-[-180deg] -mr-1`
-                  : `rotate-0 fill-[#212529] dark:fill-white`
-              } ml-auto h-5 w-5 shrink-0 fill-[#336dec] transition-transform duration-200 ease-in-out motion-reduce:transition-none dark:fill-blue-300`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="h-6 w-6"
+        <div className="grid pt-8 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2">
+          {faqData.map((faq, index) => (
+            <div key={index} className="mb-10">
+              <h3 className="flex items-center mb-4 text-lg font-medium text-gray-900 dark:text-white">
+                <svg
+                  className="flex-shrink-0 mr-2 w-5 h-5 text-gray-500 dark:text-gray-400"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                {faq.question}
+              </h3>
+              <div
+                className={`${
+                  activeElement === `element${index}` ? "block" : "hidden"
+                } text-gray-500 dark:text-gray-400`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
-              </svg>
-            </span>
-          </button>
-        </h2>
-        <TECollapse
-          show={activeElement === "element2"}
-          className="!mt-0 !rounded-b-none !shadow-none"
-        >
-          <div className="px-5 py-4">
-            Safety is our top priority. Tulip incorporates robust security
-            features and protocols to ensure the privacy and safety of our
-            users. We encourage a respectful and kind interaction space and have
-            measures in place to report and block malicious users.
-          </div>
-        </TECollapse>
-      </div>
-
-      <div className="rounded-none border border-b-0 border-l-0 border-r-0 border-t-0 border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
-        <h2 className="accordion-header mb-0" id="headingThree">
-          <button
-            className={`${
-              activeElement === "element3"
-                ? `text-primary [box-shadow:inset_0_-1px_0_rgba(229,231,235)] dark:!text-primary-400 dark:[box-shadow:inset_0_-1px_0_rgba(75,85,99)]`
-                : `transition-none rounded-b-[15px]`
-            } group relative flex w-full items-center rounded-none border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition [overflow-anchor:none] hover:z-[2] focus:z-[3] focus:outline-none dark:bg-neutral-800 dark:text-white`}
-            type="button"
-            onClick={() => handleClick("element3")}
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
-            How Do I Set Up My Profile on Tulip?
-            <span
-              className={`${
-                activeElement === "element3"
-                  ? `rotate-[-180deg] -mr-1`
-                  : `rotate-0 fill-[#212529] dark:fill-white`
-              } ml-auto h-5 w-5 shrink-0 fill-[#336dec] transition-transform duration-200 ease-in-out motion-reduce:transition-none dark:fill-blue-300`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="h-6 w-6"
+                {faq.answer}
+              </div>
+              <button
+                onClick={() => handleClick(`element${index}`)}
+                aria-expanded={activeElement === `element${index}`}
+                aria-controls={`faq${index}`}
+                className="text-primary-600 dark:text-primary-500 hover:underline"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                />
-              </svg>
-            </span>
-          </button>
-        </h2>
-        <TECollapse
-          show={activeElement === "element3"}
-          className="!mt-0 !shadow-none"
-        >
-          <div className="px-5 py-4">
-            Setting up your profile is simple. Download the Tulip app, follow
-            the on-screen instructions to create an account, and fill in your
-            profile information. You can customize your profile to showcase your
-            personality, interests, and what you’re looking for in a connection.
-          </div>
-        </TECollapse>
+                {activeElement === `element${index}` ? "Less" : "More"}
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };

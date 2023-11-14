@@ -46,13 +46,13 @@ export const Profile = ({ profileData, closeProfileModal, showInviteButton }) =>
         <div className="p-4 max-w-md bg-white rounded-xl shadow-lg mb-6 hover:scale-105 transition-transform duration-300">
           <h2 className="text-lg text-gray-600 mb-2">👀 Looking For</h2>
           <ul className="mb-1">
-            <li>Gender: {profileData.gender}</li>
+            <li>Gender Preference: {profileData.gender_preference}</li>
             <li>
               Age: {profileData.age_preference.min} -{" "}
               {profileData.age_preference.max}
             </li>
             <li>State: {profileData.state}</li>
-            <li>Relationship: {profileData.relationship}</li>
+            {/* <li>Relationship: {profileData.relationship}</li> */}
           </ul>
         </div>
   

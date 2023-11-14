@@ -20,39 +20,7 @@ export const Login = () => {
     }
   };
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   setError("");
 
-  //   try {
-  //     const response = await fetch("http://localhost:3001/api/auth/", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ email, password }),
-  //     });
-
-  //     // Wait for 3 seconds to simulate the loading process
-  //     await new Promise(resolve => setTimeout(resolve, 1500));
-
-  //     if (!response.ok) {
-  //       throw new Error("Invalid username or password");
-  //     }
-
-  //     const data = await response.json();
-  //     localStorage.setItem("token", data.token);
-  //     localStorage.setItem("userId", data.userId);
-  //     localStorage.setItem('justLoggedIn', 'true'); // Set a flag for just logged in
-  //     navigate("/match");
-  //   } catch (err) {
-  //     setError(err.message);
-  //   } finally {
-  //     // Hide the loader after 3 seconds or if there's an error
-  //     setLoading(false);
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -93,60 +61,56 @@ export const Login = () => {
   
 
   return (
-    <div className="container max-w-full mx-auto md:py-10 px-8">
-      <div className="max-w-sm mx-auto px-6">
-        <div className="relative flex flex-wrap">
-          <div className="w-full relative">
-            <div className="md:mt-6">
-              {/* Logo */}
-              <div className="text-center">
-                <img
-                  src={Logo}
-                  alt="Logo"
-                  className="mx-auto mb-4" // You can adjust the margin-bottom as needed
+    <section className="bg-gray-50 dark:bg-gray-900">
+  <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+    <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <img className="w-8 h-8 mr-2" src={Logo} alt="logo" />
+      Tulip
+    </a>
+    <div className="w-full bg-white rounded-lg shadow dark:border sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+      <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              Sign in to your account
+            </h1>
+            <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+              <div>
+                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                <input
+                  type="email"
+                  id="email"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-900 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="name@company.com"
+                  value={email}
+                  onChange={handleLogin}
+                  required
                 />
               </div>
-              <div className="text-center font-semibold text-black">
-                Welcome Back!
+              <div>
+                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-900 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={handleLogin}
+                  required
+                />
               </div>
-              <div className="text-center font-semibold text-black">
-                Login to continue
-              </div>
-              <form className="mt-8">
-                <div className="mx-auto max-w-lg">
-                  <div className="py-1">
-                    <span className="px-1 text-sm text-gray-600">Email</span>
-                    <input
-                      id="email"
-                      type="email"
-                      value={email}
-                      onChange={handleLogin}
-                      className="text-md block px-3 py-2 rounded-lg w-full
-                      bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-                    />
-                  </div>
-                  <div className="py-1">
-                    <span className="px-1 text-sm text-gray-600">Password</span>
-                    <input
-                      id="password"
-                      type="password"
-                      value={password}
-                      onChange={handleLogin}
-                      className="text-md block px-3 py-2 rounded-lg w-full
-                      bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none"
-                    />
-                  </div>
-                  {error && <div className="text-red-500">{error}</div>}
-                  {/* Login button */}
-                  <div className="flex justify-center items-center mt-6">
-                    <Button text="Login" onClick={handleSubmit} type="submit" />
-                  </div>
-                </div>
-              </form>
-            </div>
+              {error && <div className="text-red-500 text-sm">{error}</div>}
+              <button
+                type="submit"
+                className="w-full text-white bg-primary-800 hover:bg-primary-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
+                Sign in
+              </button>
+            </form>
+            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+              Don’t have an account yet? <a href="/" className="font-medium text-primary-800 hover:underline dark:text-primary-500">Sign up</a>
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

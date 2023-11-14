@@ -463,53 +463,53 @@ export const RegistrationPage = () => {
                 <div className="mt-6 space-y-6">
                   <div className="flex items-center gap-x-3">
                     <input
-                      id="men"
+                      id="Male"
                       name="show-me"
                       type="radio"
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      value={"Men"}
-                      checked={genderPrefer === "Men"}
+                      value={"Male"}
+                      checked={genderPrefer === "Male"}
                       onChange={handleGenderPreferChange}
                     />
                     <label
-                      htmlFor="men"
+                      htmlFor="Male"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Men
+                      Male
                     </label>
                   </div>
                   <div className="flex items-center gap-x-3">
                     <input
-                      id="women"
+                      id="Female"
                       name="show-me"
                       type="radio"
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                      value={"Women"}
-                      checked={genderPrefer === "Women"}
+                      value={"Female"}
+                      checked={genderPrefer === "Female"}
                       onChange={handleGenderPreferChange}
                     />
                     <label
-                      htmlFor="women"
+                      htmlFor="Female"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Women
+                      Female
                     </label>
                   </div>
                   <div className="flex items-center gap-x-3">
                     <input
-                      id="everyone"
+                      id="Others"
                       name="show-me"
                       type="radio"
-                      value={"Everyone"}
-                      checked={genderPrefer === "Everyone"}
+                      value={"Others"}
+                      checked={genderPrefer === "Others"}
                       onChange={handleGenderPreferChange}
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                     <label
-                      htmlFor="everyone"
+                      htmlFor="Others"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Everyone
+                      Others
                     </label>
                   </div>
                 </div>

@@ -16,19 +16,21 @@ export const Header = () => {
 
   return (
     <>
-      <header className="flex justify-between items-center h-20 bg-black">
-        <div className="flex justify-between items-center w-12 h-12 ml-7">
-          <img src={Logo} alt="tulip logo" />
-          <h1 className="text-4xl pl-4 text-white">tulip</h1>
+      <nav className="bg-black border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+        <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
+          <a className="flex items-center">
+            <img src={Logo} className="mr-3 h-6 sm:h-9" alt="Logo" />
+            <span className="self-center text-3xl font-semibold whitespace-nowrap text-white dark:text-white">Tulip</span>
+          </a>
+          <div className="flex items-center lg:order-2">
+            {localStorage.getItem("token") ? (
+              <Button text={"Logout"} onClick={handleLogout} className="text-white bg-primary-800 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-6 py-3 mr-2 dark:bg-primary-800 dark:hover:bbg-primary-900 focus:outline-none dark:focus:ring-primary-800" />
+            ) : (
+              <button onClick={() => setLoginModalOpen(true)} className="text-white bg-primary-800 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-6 py-3 mr-2 dark:bg-primary-800 dark:hover:bg-primary-900 focus:outline-none dark:focus:ring-primary-800">Log In</button>
+            )}
+          </div>
         </div>
-        <div className="mr-7">
-          {localStorage.getItem("token") ? (
-            <Button text={"Logout"} onClick={handleLogout} />
-          ) : (
-            <Button text={"Login"} onClick={() => setLoginModalOpen(true)} />
-          )}
-        </div>
-      </header>
+      </nav>
 
       <Modal show={isLoginModalOpen} onClose={() => setLoginModalOpen(false)}>
         <Login />

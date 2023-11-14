@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./Button.css";
 
 export const Button = ({ text, onClick, type }) => {
   const [isActive, setIsActive] = useState(false);
@@ -16,11 +15,12 @@ export const Button = ({ text, onClick, type }) => {
     <button
       onClick={onClick}
       type={type}
-      className={`button ${isActive ? "active" : ""}`}
+      className={`inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 ${isActive ? "ring-2 ring-primary-300 dark:ring-primary-900" : ""}`}
       onTouchStart={handleBtnPress}
       onTouchEnd={handleBtnRelease}
     >
-      <span className="lable">{text}</span>
+      {text}
     </button>
   );
 };
+
