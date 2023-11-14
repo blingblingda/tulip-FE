@@ -2,62 +2,33 @@ import React, { useState, useEffect } from "react";
 import { Header } from "../../UI/Header";
 import { Footer } from "../../UI/Footer";
 import { InviteCard } from "./InviteCard";
-import { fetchReceivedInvites } from "../../services/InviteService";
+import {
+  fetchReceivedInvites,
+  fetchSentInvites,
+} from "../../services/InviteService";
 
 export const InvitesPage = () => {
   const [receivedInvites, setReceivedInvites] = useState([]);
   const [sentInvites, setSentInvites] = useState([]);
   const [isToggleOn, setIsToggleOn] = useState(false);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
 
-  // Dummy data for received and sent invites
-  // const dummyReceivedInvites = [
-  //   { id: 1, name: "John Doe", status: "pending" },
-  //   { id: 2, name: "Jane Smith", status: "pending" },
-  // ];
-
-  const dummySentInvites = [
-    { id: 3, name: "Michael Johnson", status: "accepted" },
-    { id: 4, name: "Emily Davis", status: "pending" },
-  ];
-
-  // Handlers for the invite actions (placeholders for now)
-  const handleAccept = (inviteId) => {
-    console.log("Accepted invite:", inviteId);
-    // Here you would handle the accept logic
-  };
-
-  const handleDecline = (inviteId) => {
-    console.log("Declined invite:", inviteId);
-    // Here you would handle the decline logic
-  };
-
-  const fetchSentInvites = async () => {
-    // Fetch logic for sent invites
-  };
-
   useEffect(() => {
     async function fetchData() {
-      const response = await fetchReceivedInvites(userId, token);
-      setReceivedInvites(response);
+      const receivedRes = await fetchReceivedInvites(userId, token);
+      setReceivedInvites(receivedRes);
+
+      const sentRes = await fetchSentInvites(userId, token);
+      setSentInvites(sentRes);
     }
     fetchData();
-    // fetchSentInvites();
   }, []);
 
   const handleToggle = () => {
     setIsToggleOn(!isToggleOn);
   };
-
-  // if (loading) {
-  //   return (
-  //     <div className="flex justify-center items-center h-screen">
-  //       <Loader />
-  //     </div>
-  //   );
-  // }
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -86,10 +57,11 @@ export const InvitesPage = () => {
             </h1>
             <div>
               {isToggleOn
-                ? dummySentInvites.map((invite) => (
+                ? sentInvites.map((invite) => (
                     <InviteCard
-                      key={invite.id}
+                      key={invite._id}
                       invite={invite}
+                      userId={invite.user_2}
                       isReceived={false}
                     />
                   ))
@@ -97,8 +69,7 @@ export const InvitesPage = () => {
                     <InviteCard
                       key={invite._id}
                       invite={invite}
-                      onAccept={handleAccept}
-                      onDecline={handleDecline}
+                      userId={invite.user_1}
                       isReceived={true}
                     />
                   ))}

@@ -3,10 +3,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { socket } from "../../../socketConfig";
 import { Button } from "../../UI/Button";
 import { Footer } from "../../UI/Footer";
-import {
-  fetchAcceptedMatch,
-  fetchEndConversation,
-} from "../../services/MatchService";
+import { endConversation } from "../../services/MatchService";
+import { fetchUser } from "../../services/UserService";
 
 export const ChatBox = ({ username }) => {
   const [messages, setMessages] = useState([]);
@@ -38,17 +36,18 @@ export const ChatBox = ({ username }) => {
   };
 
   const handleDisconnect = async () => {
-    // try {
-    //   const matchedInfo = await fetchAcceptedMatch(userId, token);
-    //   const response = await fetchEndConversation(
-    //     matchedInfo.conversation_id,
-    //     userId
-    //   );
-    //   console.log(response);
-    //   navigate("/match");
-    // } catch (err) {
-    //   alert(err.message);
-    // }
+    try {
+      const userData = await fetchUser(userId, token);
+      const endRes = await endConversation(
+        userData.conversation.id,
+        userId,
+        token
+      );
+      alert(endRes.message);
+      navigate("/");
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (
