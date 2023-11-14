@@ -103,7 +103,7 @@ find the repo @ https://github.com/YuJi-2023/Tulip-back-end
 - [Belinda Shan](https://www.linkedin.com/in/belinda-shan-126bs414/)
 
 ### Back-end Team
-- [Angella Wu](https://www.linkedin.com/in/angella-lao/)
+- [Angella Lao](https://www.linkedin.com/in/angella-lao/)
 - [Yu Ji](https://www.linkedin.com/in/yu-ji-785718113/)
 
 ## 📺 Visual Appeal
