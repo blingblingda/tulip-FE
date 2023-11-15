@@ -57,7 +57,7 @@ export const SignUp = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:3001/api/profile/", {
+      const response = await fetch("https://tulip-back-end.onrender.com/api/profile/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

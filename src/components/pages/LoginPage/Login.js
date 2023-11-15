@@ -27,7 +27,7 @@ export const Login = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:3001/api/auth/", {
+      const response = await fetch("https://tulip-back-end.onrender.com/api/auth/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
