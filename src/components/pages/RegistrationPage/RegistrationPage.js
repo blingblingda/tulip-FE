@@ -239,31 +239,34 @@ export const RegistrationPage = () => {
   return (
     <div>
       <Header />
-      <form className="p-6 md:p-12 lg:p-20 xl:p-32" onSubmit={handleSubmit}>
+      <form
+        className="p-6 md:p-12 lg:p-20 xl:p-32 dark:bg-gray-900"
+        onSubmit={handleSubmit}
+      >
         <div className="space-y-12">
           {/* Profile title */}
-          <div className="border-b border-gray-900/10 pb-12">
-            <h1 className="text-5xl font-bold text-black text-center">
+          <div className="border-b border-gray-900/10 dark:border-gray-700 pb-12">
+            <h1 className="text-5xl font-bold text-black dark:text-white text-center">
               Profile 👤
             </h1>
-            <p className="mt-1 text-sm leading-6 text-gray-600 text-center">
+            <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400 text-center">
               "Get noticed for being you! Complete your profile to share your
               story with everyone."
             </p>
           </div>
           {/* Personal Info */}
-          <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base text-lg font-semibold leading-7 text-gray-900">
+          <div className="border-b border-gray-900/10 dark:border-gray-700 pb-12">
+            <h2 className="text-base text-lg font-semibold leading-7 text-gray-900 dark:text-white">
               Personal Information
             </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
+            <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
               Use a rough address to match with people from your area.
             </p>
 
             {/* Image upload */}
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="col-span-full">
-                <div className="group relative flex justify-center items-center rounded-lg border border-dashed border-gray-900/25 p-6">
+                <div className="group relative flex justify-center items-center rounded-lg border border-dashed border-gray-900/ dark:border-gray-700 p-6">
                   <span
                     className="ease absolute left-0 top-0 h-0 w-0 transition-all duration-200 group-hover:w-full"
                     style={{ borderTop: "2px solid var(--magenta)" }}
@@ -284,7 +287,7 @@ export const RegistrationPage = () => {
                   <div className="text-center z-10">
                     <label
                       htmlFor={"file-upload"}
-                      className="relative cursor-pointer rounded-lg bg-white p-4"
+                      className="relative cursor-pointer rounded-lg p-4"
                     >
                       {photoUrl ? (
                         <div className="w-1/5 mx-auto">
@@ -314,7 +317,7 @@ export const RegistrationPage = () => {
                         accept="image/*"
                       />
                     </label>
-                    <p className="mt-4 text-xs leading-5 text-gray-600">
+                    <p className="mt-4 text-xs leading-5 text-gray-600 dark:text-gray-400">
                       PNG, JPG, GIF up to 10MB
                     </p>
                   </div>
@@ -325,7 +328,7 @@ export const RegistrationPage = () => {
               <div className="sm:col-span-3">
                 <label
                   htmlFor="firstName"
-                  className="block text-lg font-medium leading-6 text-gray-900"
+                  className="block text-lg font-medium leading-6 text-gray-900 dark:text-gray-400"
                 >
                   First name
                 </label>
@@ -337,7 +340,7 @@ export const RegistrationPage = () => {
                     autoComplete="given-name"
                     value={firstName}
                     onChange={(e) => handleInputChange(e)}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -345,7 +348,7 @@ export const RegistrationPage = () => {
               <div className="sm:col-span-3">
                 <label
                   htmlFor="lastName"
-                  className="block text-lg font-medium leading-6 text-gray-900"
+                  className="block text-lg font-medium leading-6 text-gray-900 dark:text-gray-400"
                 >
                   Last name
                 </label>
@@ -357,7 +360,7 @@ export const RegistrationPage = () => {
                     autoComplete="family-name"
                     value={lastName}
                     onChange={(e) => handleInputChange(e)}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -378,7 +381,7 @@ export const RegistrationPage = () => {
                     placeholder="Enter your bio. (max 50 words)"
                     value={bioContent}
                     onChange={(e) => handleBioContent(e)}
-                    className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 pl-2 text-gray-900 dark:text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -399,7 +402,7 @@ export const RegistrationPage = () => {
               <div className="sm:col-span-2 sm:col-start-1">
                 <label
                   htmlFor="city"
-                  className="block text-lg font-medium leading-6 text-gray-900"
+                  className="block text-lg font-medium leading-6 text-gray-900 dark:text-gray-400"
                 >
                   City
                 </label>
@@ -411,7 +414,7 @@ export const RegistrationPage = () => {
                     autoComplete="address-level2"
                     value={city}
                     onChange={(e) => handleInputChange(e)}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -419,7 +422,7 @@ export const RegistrationPage = () => {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="region"
-                  className="block text-lg font-medium leading-6 text-gray-900"
+                  className="block text-lg font-medium leading-6 text-gray-900 dark:text-gray-400"
                 >
                   State / Province
                 </label>
@@ -430,7 +433,7 @@ export const RegistrationPage = () => {
                     autoComplete="address-level1"
                     value={selectedState}
                     onChange={(e) => setSelectedState(e.target.value)}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 dark:text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   >
                     <option value="ACT">Australian Capital Territory</option>
                     <option value="NSW">New South Wales</option>
@@ -446,15 +449,15 @@ export const RegistrationPage = () => {
             </div>
           </div>
           {/* Show me */}
-          <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-lg font-semibold leading-7 text-gray-900">
+          <div className="border-b border-gray-900/10 dark:border-gray-700 pb-12">
+            <h2 className="text-lg font-semibold leading-7 text-gray-900 dark:text-gray-400">
               Show me
             </h2>
 
             <div className="mt-10 space-y-10">
               {/* Preferences */}
               <fieldset>
-                <legend className="text-md font-semibold leading-6 text-gray-900">
+                <legend className="text-md font-semibold leading-6 text-gray-900 dark:text-gray-400">
                   Preferences
                 </legend>
                 <div className="mt-6 space-y-6">
@@ -463,14 +466,14 @@ export const RegistrationPage = () => {
                       id="Male"
                       name="show-me"
                       type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 border-gray-300 text-primary-800 focus:ring-primary-800"
                       value={"Male"}
                       checked={genderPrefer === "Male"}
                       onChange={handleGenderPreferChange}
                     />
                     <label
                       htmlFor="Male"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400"
                     >
                       Male
                     </label>
@@ -480,14 +483,14 @@ export const RegistrationPage = () => {
                       id="Female"
                       name="show-me"
                       type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 border-gray-300 text-primary-800 focus:ring-primary-800"
                       value={"Female"}
                       checked={genderPrefer === "Female"}
                       onChange={handleGenderPreferChange}
                     />
                     <label
                       htmlFor="Female"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400"
                     >
                       Female
                     </label>
@@ -500,11 +503,11 @@ export const RegistrationPage = () => {
                       value={"Others"}
                       checked={genderPrefer === "Others"}
                       onChange={handleGenderPreferChange}
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 border-gray-300 text-primary-800 focus:ring-primary-800"
                     />
                     <label
                       htmlFor="Others"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400"
                     >
                       Others
                     </label>
@@ -516,7 +519,7 @@ export const RegistrationPage = () => {
                 <legend className="text-lg font-semibold leading-6 text-gray-900">
                   Looking for
                 </legend>
-                <p className="mt-1 text-sm leading-6 text-gray-600">
+                <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
                   Add relationship intent.
                 </p>
                 <div className="mt-6 space-y-6">
@@ -528,11 +531,11 @@ export const RegistrationPage = () => {
                       value={"Long-term partner"}
                       checked={relationIntent === "Long-term partner"}
                       onChange={handleRelationIntentChange}
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 border-gray-300 text-primary-800 focus:ring-primary-800"
                     />
                     <label
                       htmlFor="long-term"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400"
                     >
                       Long-term partner ❤️
                     </label>
@@ -545,11 +548,11 @@ export const RegistrationPage = () => {
                       value={"New friends"}
                       checked={relationIntent === "New friends"}
                       onChange={handleRelationIntentChange}
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 border-gray-300 text-primary-800 focus:ring-primary-800"
                     />
                     <label
                       htmlFor="friends"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400"
                     >
                       New friends 😍
                     </label>
@@ -562,11 +565,11 @@ export const RegistrationPage = () => {
                       value={"Still figuring it out"}
                       checked={relationIntent === "Still figuring it out"}
                       onChange={handleRelationIntentChange}
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 border-gray-300 text-primary-800 focus:ring-primary-800"
                     />
                     <label
                       htmlFor="figuring-out"
-                      className="block text-sm font-medium leading-6 text-gray-900"
+                      className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400"
                     >
                       Still figuring it out 😇
                     </label>
@@ -580,7 +583,7 @@ export const RegistrationPage = () => {
         <div className="py-3">
           <PassionsModal onPassionsChange={handlePassionsChange} />
           {formError && <div className="mt-4 text-red-600">{formError}</div>}
-          <div className="mt-8 mb-16 md:mb-8 lg:mb-8 flex items-center justify-end gap-x-6">
+          <div className="mt-16 mb-12 md:mb-8 lg:mb-0 flex items-center justify-between gap-x-6">
             <Button text={"Cancel"} type="button" onClick={handleCancel} />
             <Button text={"Save"} type="submit" disabled={formError !== ""} />
           </div>

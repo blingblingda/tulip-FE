@@ -52,7 +52,7 @@ export const PassionsModal = ({ onPassionsChange }) => {
   return (
     <div>
       <button
-        className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+        className="inline-flex mx-auto justify-center items-center py-3 px-3 text-base animate-pulse font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
         onClick={(e) => {
           e.preventDefault();
           setModalOpen(true);
@@ -85,16 +85,16 @@ export const PassionsModal = ({ onPassionsChange }) => {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <h2 className="text-xl font-semibold mb-4">
+                <h2 className="text-xl font-semibold mb-4 dark:text-gray-500">
                   Select Your Passions (max 5)
                 </h2>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4 dark:text-gray-500">
                   {passions.map((passion) => (
                     <div key={passion.label}>
                       <label className="flex items-center">
                         <input
                           type="checkbox"
-                          className="form-checkbox h-4 w-4 text-indigo-600"
+                          className="form-checkbox h-4 w-4 text-primary-800 focus:ring-3 focus:ring-primary-300"
                           checked={selectedPassions.some(
                             (p) => p.label === passion.label
                           )}
@@ -107,24 +107,24 @@ export const PassionsModal = ({ onPassionsChange }) => {
                     </div>
                   ))}
                 </div>
-                <div className="mt-4">
+                <div className="mt-4 dark:text-gray-500">
                   Selected: {selectedPassions.length} / 5
                 </div>
               </div>
-              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button
-                  type="button"
-                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 mt-3 w-full sm:mt-0 sm:w-auto"
-                  onClick={handleSave}
-                >
-                  Save
-                </button>
+              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row sm:justify-between">
                 <button
                   type="button"
                   className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-700 rounded-lg border border-gray-300 shadow-sm bg-white hover:bg-gray-50 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 mt-3 w-full sm:mt-0 sm:w-auto"
                   onClick={() => setModalOpen(false)}
                 >
                   Cancel
+                </button>
+                <button
+                  type="button"
+                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 mt-3 w-full sm:mt-0 sm:w-auto"
+                  onClick={handleSave}
+                >
+                  Save
                 </button>
               </div>
             </div>
