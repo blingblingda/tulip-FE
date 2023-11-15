@@ -25,16 +25,14 @@ export const ChatBox = ({ username }) => {
     // Listen for the "userDisconnected" event
     socket.on("userDisconnected", (disconnectedUserId) => {
       // Check if the disconnected user is the current user
-      if (disconnectedUserId === userId) {
-        // Redirect to the "match" page
-        navigate("/match", { replace: true });
+      // Redirect to the "match" page
+      navigate("/match", { replace: true });
 
-        // Use setTimeout to ensure the navigation has time to complete
-        // before the page reloads.
-        setTimeout(() => {
-          window.location.reload();
-        }, 100); // Adjust time as necessary for your application's needs
-      }
+      // Use setTimeout to ensure the navigation has time to complete
+      // before the page reloads.
+      setTimeout(() => {
+        window.location.reload();
+      }, 100); // Adjust time as necessary for your application's needs
     });
 
     return () => {

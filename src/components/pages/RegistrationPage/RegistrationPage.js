@@ -98,6 +98,7 @@ export const RegistrationPage = () => {
   const [bioContent, setBioContent] = useState("");
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
+  const BACKEND_URL = "https://tulip-back-end.onrender.com";
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -185,7 +186,7 @@ export const RegistrationPage = () => {
         bio: bioContent,
       };
 
-      fetch(`https://tulip-back-end.onrender.com/api/profile/${userId}`, {
+      fetch(`${BACKEND_URL}/api/profile/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -1,6 +1,8 @@
+const BACKEND_URL = "https://tulip-back-end.onrender.com";
+
 export const fetchReceivedInvites = async (userId, token) => {
   const response = await fetch(
-    `https://tulip-back-end.onrender.com/api/matches/get_invites/${userId}`,
+    `${BACKEND_URL}/api/matches/get_invites/${userId}`,
     {
       method: "GET",
       headers: {
@@ -14,7 +16,7 @@ export const fetchReceivedInvites = async (userId, token) => {
 
 export const fetchSentInvites = async (userId, token) => {
   const response = await fetch(
-    `https://tulip-back-end.onrender.com/api/matches/invites_sent/${userId}`,
+    `${BACKEND_URL}/api/matches/invites_sent/${userId}`,
     {
       method: "GET",
       headers: {
@@ -27,37 +29,31 @@ export const fetchSentInvites = async (userId, token) => {
 };
 
 export const acceptInvite = async (matchId, receiverId, token) => {
-  const response = await fetch(
-    `https://tulip-back-end.onrender.com/api/matches/accept_match`,
-    {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": token,
-      },
-      body: JSON.stringify({
-        matchId,
-        receiverId,
-      }),
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/api/matches/accept_match`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "x-auth-token": token,
+    },
+    body: JSON.stringify({
+      matchId,
+      receiverId,
+    }),
+  });
   return response.json();
 };
 
 export const declineInvite = async (matchId, receiverId, token) => {
-  const response = await fetch(
-    `https://tulip-back-end.onrender.com/api/matches/decline_match`,
-    {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": token,
-      },
-      body: JSON.stringify({
-        matchId,
-        receiverId,
-      }),
-    }
-  );
+  const response = await fetch(`${BACKEND_URL}/api/matches/decline_match`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "x-auth-token": token,
+    },
+    body: JSON.stringify({
+      matchId,
+      receiverId,
+    }),
+  });
   return response;
 };
