@@ -128,7 +128,7 @@ export const RegistrationPage = () => {
     const formData = new FormData();
     formData.append("image", photoFile);
     try {
-      const res = await fetch("http://localhost:3001/api/images", {
+      const res = await fetch("https://tulip-back-end.onrender.com/api/images", {
         method: "POST",
         body: formData,
       });
@@ -187,7 +187,7 @@ export const RegistrationPage = () => {
       };
 
       fetch(
-        `http://localhost:3001/api/profile/${localStorage.getItem("userId")}`,
+        `https://tulip-back-end.onrender.com/api/profile/${localStorage.getItem("userId")}`,
         {
           method: "PUT",
           headers: {
