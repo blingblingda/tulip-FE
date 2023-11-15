@@ -7,6 +7,7 @@ import { CustomDatePicker as DatePicker } from "./Date";
 import { PassionsModal } from "./Modal";
 import { Gender } from "./Gender";
 import RangeSlider from "./RangeSlider";
+import { sendUserImage } from "../../services/UserService";
 
 const validateForm = ({
   firstName,
@@ -95,6 +96,8 @@ export const RegistrationPage = () => {
   const [formError, setFormError] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
   const [bioContent, setBioContent] = useState("");
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -128,12 +131,8 @@ export const RegistrationPage = () => {
     const formData = new FormData();
     formData.append("image", photoFile);
     try {
-      const res = await fetch("https://tulip-back-end.onrender.com/api/images", {
-        method: "POST",
-        body: formData,
-      });
-      const result = await res.json();
-      setPhotoUrl(result.photo_url);
+      const res = await sendUserImage(formData);
+      setPhotoUrl(res.photo_url);
     } catch (err) {
       console.error("Failed to upload the image.", err);
     }
@@ -186,17 +185,14 @@ export const RegistrationPage = () => {
         bio: bioContent,
       };
 
-      fetch(
-        `https://tulip-back-end.onrender.com/api/profile/${localStorage.getItem("userId")}`,
-        {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            "x-auth-token": `${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify(userInfo),
-        }
-      )
+      fetch(`https://tulip-back-end.onrender.com/api/profile/${userId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": `${token}`,
+        },
+        body: JSON.stringify(userInfo),
+      })
         .then((res) => res.json())
         .then((data) => {
           navigate("/match");
@@ -250,7 +246,8 @@ export const RegistrationPage = () => {
               Profile 👤
             </h1>
             <p className="mt-1 text-sm leading-6 text-gray-600 text-center">
-            "Get noticed for being you! Complete your profile to share your story with everyone."
+              "Get noticed for being you! Complete your profile to share your
+              story with everyone."
             </p>
           </div>
           {/* Personal Info */}

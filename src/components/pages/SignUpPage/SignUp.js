@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "../../UI/Button";
 import Logo from "../../../assets/tulip-32x32.png";
 import Loader from "../LoadingScreen/Loader";
+import { createUserInfo } from "../../services/AuthenticationService";
 
 export const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -51,22 +52,11 @@ export const SignUp = () => {
 
     setLoading(true); // Set loading to true only after validation passes
 
-    const userData = {
-      email: email,
-      password: password,
-    };
-
     try {
-      const response = await fetch("https://tulip-back-end.onrender.com/api/profile/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      });
+      const response = await createUserInfo(email, password);
 
-       // Wait for 3 seconds to simulate the loading process
-       await new Promise(resolve => setTimeout(resolve, 3000));
+      // Wait for 3 seconds to simulate the loading process
+      await new Promise((resolve) => setTimeout(resolve, 3000));
 
       if (!response.ok) {
         throw new Error("User already exists");
@@ -91,11 +81,13 @@ export const SignUp = () => {
     );
   }
 
-
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
-  <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
-        <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
+        <a
+          href="#"
+          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+        >
           <img className="w-8 h-8 mr-2" src={Logo} alt="logo" />
           Tulip
         </a>
@@ -107,7 +99,12 @@ export const SignUp = () => {
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               {/* Email Input */}
               <div>
-                <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Your email
+                </label>
                 <input
                   type="email"
                   id="email"
@@ -120,7 +117,12 @@ export const SignUp = () => {
               </div>
               {/* Password Input */}
               <div>
-                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                <label
+                  htmlFor="password"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Password
+                </label>
                 <input
                   type="password"
                   id="password"
@@ -133,7 +135,12 @@ export const SignUp = () => {
               </div>
               {/* Confirm Password Input */}
               <div>
-                <label htmlFor="password-confirm" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm password</label>
+                <label
+                  htmlFor="password-confirm"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Confirm password
+                </label>
                 <input
                   type="password"
                   id="password-confirm"
@@ -147,12 +154,21 @@ export const SignUp = () => {
               {/* Error message */}
               {error && <div className="text-red-500 text-sm">{error}</div>}
               {/* Submit Button */}
-              <button type="submit" className="w-full text-white bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+              <button
+                type="submit"
+                className="w-full text-white bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
                 Create an account
               </button>
               {/* Already have an account */}
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Already have an account? <a href="/" className="font-medium text-primary-700 hover:underline dark:text-primary-900">Login here</a>
+                Already have an account?{" "}
+                <a
+                  href="/"
+                  className="font-medium text-primary-700 hover:underline dark:text-primary-900"
+                >
+                  Login here
+                </a>
               </p>
             </form>
           </div>

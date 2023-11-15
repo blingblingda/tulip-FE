@@ -37,7 +37,6 @@ export const HomePage = () => {
     }
   }, [navigate]);
 
-
   // If the loading state is true, render the Loader component
   if (isLoading) {
     return <Loader />;
@@ -247,11 +246,11 @@ export const HomePage = () => {
           </div>
         </section>
 
-        {/* What other say */}
+        {/* What others say */}
         <section className="bg-base-200 dark:bg-gray-900">
           <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
             <div className="mx-auto mb-8 max-w-screen-sm lg:mb-16">
-              <h2 className="mb-6 text-5xl font-bold">What Other Say 🗣️</h2>
+              <h2 className="mb-6 text-5xl font-bold">What Others Say 🗣️</h2>
             </div>
             <div className="grid gap-6 text-center md:grid-cols-3">
               <div>

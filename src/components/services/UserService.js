@@ -1,4 +1,4 @@
-export async function fetchUser(userId, token) {
+export const fetchUser = async (userId, token) => {
   const userProfile = await fetch(
     `https://tulip-back-end.onrender.com/api/profile/${userId}`,
     {
@@ -10,4 +10,15 @@ export async function fetchUser(userId, token) {
     }
   );
   return userProfile.json();
-}
+};
+
+export const sendUserImage = async (formData) => {
+  const userImage = await fetch(
+    `https://tulip-back-end.onrender.com/api/images`,
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
+  return userImage.json();
+};
