@@ -1,6 +1,6 @@
 export const fetchReceivedInvites = async (userId, token) => {
   const response = await fetch(
-    `http://localhost:3001/api/matches/get_invites/${userId}`,
+    `https://tulip-back-end.onrender.com/api/matches/get_invites/${userId}`,
     {
       method: "GET",
       headers: {
@@ -14,7 +14,7 @@ export const fetchReceivedInvites = async (userId, token) => {
 
 export const fetchSentInvites = async (userId, token) => {
   const response = await fetch(
-    `http://localhost:3001/api/matches/invites_sent/${userId}`,
+    `https://tulip-back-end.onrender.com/api/matches/invites_sent/${userId}`,
     {
       method: "GET",
       headers: {
@@ -28,7 +28,7 @@ export const fetchSentInvites = async (userId, token) => {
 
 export const acceptInvite = async (matchId, receiverId, token) => {
   const response = await fetch(
-    `http://localhost:3001/api/matches/accept_match`,
+    `https://tulip-back-end.onrender.com/api/matches/accept_match`,
     {
       method: "PATCH",
       headers: {
@@ -46,7 +46,7 @@ export const acceptInvite = async (matchId, receiverId, token) => {
 
 export const declineInvite = async (matchId, receiverId, token) => {
   const response = await fetch(
-    `http://localhost:3001/api/matches/decline_match`,
+    `https://tulip-back-end.onrender.com/api/matches/decline_match`,
     {
       method: "PATCH",
       headers: {

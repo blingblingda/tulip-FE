@@ -1,6 +1,6 @@
 export async function fetchUser(userId, token) {
   const userProfile = await fetch(
-    `http://localhost:3001/api/profile/${userId}`,
+    `https://tulip-back-end.onrender.com/api/profile/${userId}`,
     {
       method: "GET",
       headers: {

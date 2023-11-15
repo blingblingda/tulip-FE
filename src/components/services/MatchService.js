@@ -1,6 +1,6 @@
 export const fetchPotentialMatch = async (userId, token) => {
   const response = await fetch(
-    `http://localhost:3001/api/potential_match/${userId}`,
+    `https://tulip-back-end.onrender.com/api/potential_match/${userId}`,
     {
       method: "GET",
       headers: {
@@ -14,7 +14,7 @@ export const fetchPotentialMatch = async (userId, token) => {
 
 export const sendInvite = async (senderId, receiverId, token) => {
   const response = await fetch(
-    `http://localhost:3001/api/matches/send_invite`,
+    `https://tulip-back-end.onrender.com/api/matches/send_invite`,
     {
       method: "POST",
       headers: {
@@ -32,7 +32,7 @@ export const sendInvite = async (senderId, receiverId, token) => {
 
 export const endConversation = async (conversationId, userId, token) => {
   const response = await fetch(
-    `http://localhost:3001/api/matches/end_conversation`,
+    `https://tulip-back-end.onrender.com/api/matches/end_conversation`,
     {
       method: "PATCH",
       headers: {
