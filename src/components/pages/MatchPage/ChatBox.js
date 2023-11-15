@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { socket } from "../../../socketConfig";
 import { Button } from "../../UI/Button";
 import { Footer } from "../../UI/Footer";
@@ -22,17 +22,12 @@ export const ChatBox = ({ username }) => {
       setMessages((prev) => [...prev, newMessage]);
     });
 
-    // Listen for the "userDisconnected" event
-    socket.on("userDisconnected", (disconnectedUserId) => {
-      // Check if the disconnected user is the current user
-      // Redirect to the "match" page
+    socket.on("userDisconnected", (matchId) => {
       navigate("/match", { replace: true });
-
-      // Use setTimeout to ensure the navigation has time to complete
-      // before the page reloads.
+      // Use setTimeout to ensure the navigation has time to complete before the page reloads.
       setTimeout(() => {
         window.location.reload();
-      }, 100); // Adjust time as necessary for your application's needs
+      }, 100);
     });
 
     return () => {
@@ -49,6 +44,12 @@ export const ChatBox = ({ username }) => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleMessage();
+    }
+  };
+
   const handleDisconnect = async () => {
     try {
       const userData = await fetchUser(userId, token);
@@ -60,7 +61,7 @@ export const ChatBox = ({ username }) => {
       alert(endRes.message);
 
       // Emit a "disconnect" event to the server
-      socket.emit("disconnectUser", userId);
+      socket.emit("disconnectUser", userData.conversation.id);
 
       // Navigate to the "match" page
       navigate("/match", { replace: true });
@@ -69,7 +70,7 @@ export const ChatBox = ({ username }) => {
       // before the page reloads.
       setTimeout(() => {
         window.location.reload();
-      }, 100); // Adjust time as necessary for your application's needs
+      }, 100);
     } catch (err) {
       alert(err.message);
     }
@@ -126,6 +127,7 @@ export const ChatBox = ({ username }) => {
                   className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
+                  onKeyDown={handleKeyDown}
                   placeholder="Type your message"
                 />
               </div>

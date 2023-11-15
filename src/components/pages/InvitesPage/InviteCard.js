@@ -51,7 +51,7 @@ export const InviteCard = ({ invite, userId, isReceived }) => {
         token
       );
       if (declineRes.status === 200) {
-        setHideComponent(true);
+        window.location.reload(false);
       }
     }
     sendData();
@@ -70,7 +70,9 @@ export const InviteCard = ({ invite, userId, isReceived }) => {
             className="w-10 h-10 rounded-full object-cover object-center mr-4"
           />
           <div>
-            <h5 className="text-lg font-medium dark:text-gray-500">{userInfo.name}</h5>
+            <h5 className="text-lg font-medium dark:text-gray-500">
+              {userInfo.name}
+            </h5>
             {/* Additional invite details here */}
           </div>
         </div>
