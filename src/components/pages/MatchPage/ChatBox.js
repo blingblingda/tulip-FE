@@ -58,7 +58,7 @@ export const ChatBox = ({ username }) => {
         userId,
         token
       );
-      alert(endRes.message);
+      // alert(endRes.message);
 
       // Emit a "disconnect" event to the server
       socket.emit("disconnectUser", userData.conversation.id);
@@ -81,7 +81,7 @@ export const ChatBox = ({ username }) => {
     //<div className="col-start-1 col-end-8 p-3 rounded-lg"></div>
 
     <div className="h-screen overflow-hidden flex items-center justify-center bg-black">
-      <div className="fixed top-0 left-0 w-full flex justify-center  z-50 pt-2">
+      <div className="fixed top-0 left-0 w-full flex justify-center z-50 pt-1">
         <Button text={"Disconnect"} onClick={handleDisconnect} />
       </div>
 
@@ -102,13 +102,13 @@ export const ChatBox = ({ username }) => {
                         msg.user === username ? "flex-row-reverse" : "flex-row"
                       } items-center`}
                     >
-                      <div className="flex items-center justify-center h-10 w-10 rounded-full bg-custom-lightpink flex-shrink-0">
+                      <div className="flex items-center justify-center h-10 w-10 rounded-full bg-custom-lightpink flex-shrink-0 dark:text-black">
                         {msg.user.charAt(0)}
                       </div>
                       <div
                         className={`relative ${
                           msg.user === username ? "mr-3" : "ml-3"
-                        } text-sm bg-white py-2 px-4 shadow rounded-xl`}
+                        } text-sm bg-white py-2 px-4 shadow rounded-xl dark:text-black`}
                       >
                         <div>{msg.content}</div>
                       </div>
@@ -124,7 +124,7 @@ export const ChatBox = ({ username }) => {
               <div className="relative w-full">
                 <input
                   type="text"
-                  className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10"
+                  className="flex w-full border rounded-xl focus:outline-none focus:border-indigo-300 pl-4 h-10 dark:text-black"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   onKeyDown={handleKeyDown}

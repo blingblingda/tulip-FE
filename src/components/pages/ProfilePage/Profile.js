@@ -35,7 +35,9 @@ export const Profile = ({
 
         {/* Name and Bio Card */}
         <div className="p-4 max-w-md bg-white rounded-xl shadow-lg mb-6 hover:scale-105 transition-transform duration-300">
-          <h1 className="text-xl font-semibold mb-1 dark:text-black">👋 {profileData.name}</h1>
+          <h1 className="text-xl font-semibold mb-1 dark:text-black">
+            👋 {profileData.name}
+          </h1>
           <h2 className="mb-1 dark:text-black">
             {profileData.age}, {profileData.gender}, {profileData.state}
           </h2>
@@ -44,13 +46,19 @@ export const Profile = ({
 
         {/* Passions Card */}
         <div className="p-4 bg-white max-w-md rounded-xl shadow-lg mb-6 hover:scale-105 transition-transform duration-300">
-          <h2 className="text-lg text-gray-600 mb-2 dark:text-black">🔥 Passions</h2>
-          <div className="dark:text-gray-600">{profileData.passion.map((p) => p).join(", ")}</div>
+          <h2 className="text-lg text-gray-600 mb-2 dark:text-black">
+            🔥 Passions
+          </h2>
+          <div className="dark:text-gray-600">
+            {profileData.passion.map((p) => p).join(", ")}
+          </div>
         </div>
 
         {/* Show me Card */}
         <div className="p-4 max-w-md bg-white rounded-xl shadow-lg mb-6 hover:scale-105 transition-transform duration-300">
-          <h2 className="text-lg text-gray-600 mb-2 dark:text-black">👀 Looking For</h2>
+          <h2 className="text-lg text-gray-600 mb-2 dark:text-black">
+            👀 Looking For
+          </h2>
           <ul className="mb-1 dark:text-gray-600">
             <li>Gender Preference: {profileData.gender_preference}</li>
             <li>
@@ -58,7 +66,7 @@ export const Profile = ({
               {profileData.age_preference.max}
             </li>
             <li>State: {profileData.state}</li>
-            {/* <li>Relationship: {profileData.relationship}</li> */}
+            <li>Relationship: {profileData.looking_for}</li>
           </ul>
         </div>
 

@@ -179,7 +179,7 @@ export const RegistrationPage = () => {
         city: trimmedCity,
         state: selectedState,
         gender_preference: genderPrefer,
-        // relationIntent,
+        looking_for: relationIntent,
         passion: passionLabels,
         age_preference: ageRange,
         photo_url: photoUrl,
