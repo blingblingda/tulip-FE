@@ -11,21 +11,27 @@ export const InvitesPage = () => {
   const [receivedInvites, setReceivedInvites] = useState([]);
   const [sentInvites, setSentInvites] = useState([]);
   const [isToggleOn, setIsToggleOn] = useState(false);
-  // const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
 
+  // Fetches received and sent invites on component mount
   useEffect(() => {
     async function fetchData() {
-      const receivedRes = await fetchReceivedInvites(userId, token);
-      setReceivedInvites(receivedRes);
+      try {
+        const receivedRes = await fetchReceivedInvites(userId, token);
+        setReceivedInvites(receivedRes);
 
-      const sentRes = await fetchSentInvites(userId, token);
-      setSentInvites(sentRes);
+        const sentRes = await fetchSentInvites(userId, token);
+        setSentInvites(sentRes);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        alert("An error occurred while fetching data. Please try again later.");
+      }
     }
     fetchData();
   }, []);
 
+  // Toggles between received and sent invites
   const handleToggle = () => {
     setIsToggleOn(!isToggleOn);
   };
@@ -37,7 +43,6 @@ export const InvitesPage = () => {
       {/* Toggle button container */}
       <div className="py-4 w-full flex justify-center bg-gray-750">
         {" "}
-        {/* Adjust the background as needed */}
         <label className="relative inline-flex items-center cursor-pointer">
           <input
             type="checkbox"
@@ -55,6 +60,7 @@ export const InvitesPage = () => {
             <h1 className="text-2xl font-semibold text-center dark:text-gray-500">
               {isToggleOn ? "Sent Invites" : "Received Invites"}
             </h1>
+            {/* Invites list */}
             <div>
               {isToggleOn
                 ? sentInvites.map((invite) => (

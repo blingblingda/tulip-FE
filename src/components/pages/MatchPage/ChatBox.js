@@ -13,23 +13,28 @@ export const ChatBox = ({ username }) => {
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
 
+  // Effect for handling socket events
   useEffect(() => {
+    // Event listener for initial message history
     socket.on("messageHistory", (messageHistory) => {
       setMessages(messageHistory);
     });
 
+    // Event listener for new incoming messages
     socket.on("newMessage", (newMessage) => {
       setMessages((prev) => [...prev, newMessage]);
     });
 
+    // Event listener for user disconnection
     socket.on("userDisconnected", (matchId) => {
       navigate("/match", { replace: true });
-      // Use setTimeout to ensure the navigation has time to complete before the page reloads.
+      // Using setTimeout to ensure navigation completes before page reloads
       setTimeout(() => {
         window.location.reload();
       }, 100);
     });
 
+    // Cleanup: removing event listeners when component unmounts
     return () => {
       socket.off("messageHistory");
       socket.off("newMessage");
@@ -58,21 +63,18 @@ export const ChatBox = ({ username }) => {
         userId,
         token
       );
-      // alert(endRes.message);
 
-      // Emit a "disconnect" event to the server
+      // Emitting socket event for user disconnection and navigating
       socket.emit("disconnectUser", userData.conversation.id);
-
-      // Navigate to the "match" page
       navigate("/match", { replace: true });
 
-      // Use setTimeout to ensure the navigation has time to complete
-      // before the page reloads.
+      // Using setTimeout to ensure navigation completes before page reloads
       setTimeout(() => {
         window.location.reload();
       }, 100);
     } catch (err) {
-      alert(err.message);
+      console.error("Error fetching data:", err);
+      alert("An error occurred while fetching data. Please try again later.");
     }
   };
 
@@ -90,6 +92,7 @@ export const ChatBox = ({ username }) => {
           <div className="flex flex-col h-full overflow-x-auto mb-4">
             <div className="flex flex-col h-full">
               <div className="grid grid-cols-12 gap-y-2">
+                {/* Mapping and rendering messages */}
                 {messages.map((msg, index) => (
                   <div
                     key={index}
@@ -119,6 +122,7 @@ export const ChatBox = ({ username }) => {
             </div>
           </div>
 
+          {/* Input field for typing messages */}
           <div className="flex flex-row items-center h-16 rounded-xl bg-white w-full px-4">
             <div className="flex-grow ml-4">
               <div className="relative w-full">
@@ -132,6 +136,7 @@ export const ChatBox = ({ username }) => {
                 />
               </div>
             </div>
+            {/* Button to send messages */}
             <div className="ml-4">
               <Button text="Send" onClick={handleMessage} />
             </div>
@@ -139,9 +144,7 @@ export const ChatBox = ({ username }) => {
         </div>
       </div>
 
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 };

@@ -9,7 +9,6 @@ import { socket } from "../../../socketConfig";
 import { fetchPotentialMatch } from "../../services/MatchService";
 import { fetchUser } from "../../services/UserService";
 import Loader from "../LoadingScreen/Loader";
-import { Button } from "../../UI/Button";
 import { useNavigate } from "react-router-dom";
 
 export const MatchPage = () => {
@@ -40,7 +39,8 @@ export const MatchPage = () => {
           setLoading(false);
         }
       } catch (err) {
-        console.error(err);
+        console.error("Error fetching data:", err);
+        alert("An error occurred while fetching data. Please try again later.");
         setLoading(false);
       }
     }
@@ -48,7 +48,7 @@ export const MatchPage = () => {
   }, []);
 
   const handleInvitesClick = () => {
-    navigate("/invites"); // Use navigate inside this function
+    navigate("/invites");
   };
 
   const openProfileModal = (profileData) => {
@@ -74,7 +74,6 @@ export const MatchPage = () => {
   }
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
       <Header />
 
       {/* Main content */}
@@ -94,6 +93,7 @@ export const MatchPage = () => {
               </button>
             </div>
 
+            {/* Title */}
             <div className="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
               <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
                 Find Your Match ✨
@@ -118,7 +118,6 @@ export const MatchPage = () => {
         </section>
       </div>
 
-      {/* Footer */}
       <Footer />
 
       {/* Profile Modal */}
@@ -134,38 +133,3 @@ export const MatchPage = () => {
     </div>
   );
 };
-//     <div className="min-h-screen flex flex-col">
-//       <div className="flex-shrink-0">
-//         <Header />
-//       </div>
-//       <div className="flex-1 bg-base-200">
-//         {/* Button centered with flex container */}
-//         <div className="flex justify-center py-4">
-//           <Button text={"Invites"} onClick={handleInvitesClick} />
-//         </div>
-//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4 px-20 py-10 mx-auto max-w-screen-xl">
-//           {matchedData.map((data) => (
-//             <Pcard
-//               key={data._id}
-//               data={data}
-//               onClick={() => openProfileModal(data)}
-//             />
-//           ))}
-//         </div>
-//       </div>
-//       <div className="flex-shrink-0">
-//         <Footer />
-//       </div>
-
-//       <Modal show={isModalOpen} onClick={closeProfileModal}>
-//         {selectedProfile && (
-//           <Profile
-//             profileData={selectedProfile}
-//             closeProfileModal={closeProfileModal}
-//             showInviteButton={true}
-//           />
-//         )}
-//       </Modal>
-//     </div>
-//   );
-// };
