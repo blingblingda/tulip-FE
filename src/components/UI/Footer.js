@@ -9,10 +9,12 @@ export const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Check if the user is authenticated
   const isAuthenticated = () => {
     return !!localStorage.getItem("token");
   };
 
+  // Handle navigation, preventing unnecessary redirects
   const handleNavigate = (path) => {
     if (location.pathname !== path) {
       navigate(path);
@@ -22,26 +24,26 @@ export const Footer = () => {
   // Basic footer content for non-authenticated users
   const basicFooterContent = (
     <footer className="p-4 bg-black sm:p-6 dark:bg-gray-800">
-      <div className="mx-auto max-w-screen-xl px-2 lg:px-0"> {/* Adjust padding for large screens */}
+      <div className="mx-auto max-w-screen-xl px-2 lg:px-0">
         <div className="md:flex md:justify-between">
+          {/* Tulip logo and branding */}
           <div className="mb-6 md:mb-0">
             <a href="#" className="flex items-center">
-              <img
-                src={Logo}
-                className="mr-3 h-8"
-                alt="Tulip Logo"
-              />
+              <img src={Logo} className="mr-3 h-8" alt="Tulip Logo" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Tulip
               </span>
             </a>
           </div>
-          {/* Added text on the right side */}
+          {/* Footer text for large screens */}
           <div className="hidden text-sm text-gray-500 md:block dark:text-gray-400">
             Made with Love - For love ❤️
           </div>
         </div>
+
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+
+        {/* Copyright and responsive text */}
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © 2023{" "}
@@ -58,12 +60,12 @@ export const Footer = () => {
       </div>
     </footer>
   );
-  
 
   return (
     <footer className="fixed inset-x-0 bottom-0 bg-black text-white shadow-lg">
       {isAuthenticated() ? (
         <nav className="flex justify-around items-center h-16">
+          {/* Home navigation button */}
           <button
             onClick={() => handleNavigate("/")}
             className={`flex flex-col items-center w-full focus:outline-none ${
@@ -72,6 +74,8 @@ export const Footer = () => {
           >
             <HomeIcon className="h-12 w-12" />
           </button>
+
+          {/* Registration navigation button */}
           <button
             onClick={() => handleNavigate("/registration")}
             className={`flex flex-col items-center w-full focus:outline-none ${
@@ -82,6 +86,8 @@ export const Footer = () => {
           >
             <FormIcon className="h-12 w-12" />
           </button>
+
+          {/* Match navigation button */}
           <button
             onClick={() => handleNavigate("/match")}
             className={`flex flex-col items-center w-full focus:outline-none ${
@@ -94,6 +100,7 @@ export const Footer = () => {
           </button>
         </nav>
       ) : (
+        // Render basic footer content for non-authenticated users
         basicFooterContent
       )}
     </footer>

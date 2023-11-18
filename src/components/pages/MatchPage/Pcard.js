@@ -23,11 +23,6 @@ export const Pcard = (props) => {
         <p className="mb-2 text-base text-neutral-600">
           {props.data.age}, {props.data.gender}, {props.data.state}
         </p>
-        {/* <p className="mb-2 text-base text-neutral-600">
-          {props.data.passion.join(", ")}
-        </p> */}
-
-        {/* Button centered with flex container */}
         <div className="flex justify-center">
           <Button text={"More"} />
         </div>

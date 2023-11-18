@@ -1,4 +1,3 @@
-// Modal.js
 import React from "react";
 
 export const Modal = ({ show, onClose, children }) => {

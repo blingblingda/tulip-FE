@@ -12,11 +12,15 @@ export const Profile = ({
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
 
+  // Handles sending an invite to the user
   const handleInviteSend = async () => {
     try {
       const inviteSent = await sendInvite(userId, profileData._id, token);
       setMessage(inviteSent.message);
     } catch (err) {
+      // Log and display an error message if invite sending fails
+      console.error("Error sending data:", err);
+      alert("An error occurred while sending data. Please try again later.");
       setErrorMessage(err.message);
     }
   };
@@ -24,7 +28,7 @@ export const Profile = ({
   return (
     <div className="bg-gray-100 p-4 md:p-8">
       <div className="overflow-auto max-h-[90vh] w-full lg:w-auto lg:max-w-6xl px-4 lg:px-8 mx-auto">
-        {/* First Photo Card */}
+        {/* Photo Card */}
         <div className="max-w-md p-6 rounded-xl shadow-lg mb-6 hover:scale-105 transition-transform duration-300">
           <img
             src={profileData.photo_url}
@@ -70,10 +74,12 @@ export const Profile = ({
           </ul>
         </div>
 
-        {/* Close Modal */}
+        {/* Display success message if invite is sent successfully */}
         {message && <div style={{ color: "green" }}>{message}</div>}
-
+        {/* Display error message if there's an issue with sending the invite */}
         {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+
+        {/* Buttons for closing the modal and sending an invite */}
         <div className="flex justify-around mt-4 mb-2">
           <Button
             text={"Close"}
