@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 
+// Gender component allows users to select a gender and communicates the selection to the parent component
 export const Gender = ({ onGenderChange }) => {
+  // State to keep track of the currently selected gender option
   const [selectedOption, setSelectedOption] = useState("");
 
+  // Handler for when the gender selection changes
   const handleGenderChange = (e) => {
     const option = e.target.value;
-    setSelectedOption(option);
-    onGenderChange(option);
+    setSelectedOption(option); // Update the local state with the new selection
+    onGenderChange(option); // Invoke the callback function passed from the parent component
   };
 
   return (
@@ -15,7 +18,7 @@ export const Gender = ({ onGenderChange }) => {
         Gender
       </h3>
       <ul className="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
-        {["Male", "Female", "Others"].map((option, index) => (
+        {["Male", "Female", "Other"].map((option, index) => (
           <li
             key={index}
             className={`w-full ${

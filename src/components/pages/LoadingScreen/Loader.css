@@ -1,44 +1,62 @@
+/* Base styling for the main container of the animation */
 .cssload-main {
   position: absolute;
-  content: '';
+  content: "";
   left: 50%;
   transform: translate(-100%, -240%);
+  /* Cross-browser compatibility for the transform property */
   -o-transform: translate(-100%, -240%);
   -ms-transform: translate(-100%, -240%);
   -webkit-transform: translate(-100%, -240%);
   -moz-transform: translate(-100%, -240%);
 }
 
+/* Ensuring that all child elements of .cssload-main inherit the same font size */
 .cssload-main * {
   font-size: 62px;
 }
 
+/* Base styling for the heart shape in the animation */
 .cssload-heart {
+  /* Animation specific to the heart shape */
   animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -o-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -ms-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -webkit-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -moz-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+  /* Cross-browser compatibility for the animation */
+  -o-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -ms-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -webkit-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -moz-animation: cssload-heart 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
   top: 50%;
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
 }
 
+/* Styling for the left part of the heart */
 .cssload-heartL {
+  /* Positioning and sizing */
   width: 1em;
   height: 1em;
   border: 1px solid rgb(#b80d54);
   background-color: #b80d54;
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   border-radius: 100%;
+  /* Animation specific to the left heart */
   animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -o-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -ms-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -webkit-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -moz-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+  /* Cross-browser compatibility for the transform and animation */
+  -o-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -ms-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -webkit-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -moz-animation: cssload-heartL 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
   transform: translate(-28px, -27px);
   -o-transform: translate(-28px, -27px);
   -ms-transform: translate(-28px, -27px);
@@ -46,12 +64,14 @@
   -moz-transform: translate(-28px, -27px);
 }
 
+/* Styling for the right part of the heart */
 .cssload-heartR {
+  /* Similar to .cssload-heartL but positioned to the right */
   width: 1em;
   height: 1em;
   border: 1px solid rgb(#b80d54);
   background-color: #b80d54;
-  content: '';
+  content: "";
   position: absolute;
   display: block;
   border-radius: 100%;
@@ -61,51 +81,72 @@
   -webkit-transform: translate(28px, -27px);
   -moz-transform: translate(28px, -27px);
   animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -o-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -ms-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -webkit-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -moz-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+  -o-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -ms-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -webkit-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -moz-animation: cssload-heartR 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
 }
 
+/* Styling for the square shape in the animation */
 .cssload-square {
+  /* Positioning, sizing, and initial transformation */
   width: 1em;
   height: 1em;
   border: 1px solid rgb(#b80d54);
   background-color: #b80d54;
   position: relative;
   display: block;
-  content: '';
+  content: "";
   transform: scale(1) rotate(-45deg);
   -o-transform: scale(1) rotate(-45deg);
   -ms-transform: scale(1) rotate(-45deg);
   -webkit-transform: scale(1) rotate(-45deg);
   -moz-transform: scale(1) rotate(-45deg);
+  /* Animation for the square shape */
   animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -o-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -ms-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -webkit-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -moz-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+  /* Cross-browser compatibility for transform and animation */
+  -o-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -ms-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -webkit-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -moz-animation: cssload-square 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
 }
 
+/* Styling for the shadow effect */
 .cssload-shadow {
   top: 97px;
   left: 50%;
-  content: '';
+  content: "";
   position: relative;
   display: block;
-  bottom: -.5em;
+  bottom: -0.5em;
   width: 1em;
-  height: .24em;
-  background-color: rgb(215,215,215);
-  border: 1px solid rgb(215,215,215);
+  height: 0.24em;
+  background-color: rgb(215, 215, 215);
+  border: 1px solid rgb(215, 215, 215);
   border-radius: 50%;
+  /* Animation for the shadow effect */
   animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -o-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -ms-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -webkit-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
-  -moz-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite normal;
+  -o-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -ms-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -webkit-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
+  -moz-animation: cssload-shadow 2.88s cubic-bezier(0.75, 0, 0.5, 1) infinite
+    normal;
 }
 
+/* Keyframe animations */
+/* These animations define how elements should be animated */
+/* The specific keyframes for each animation are defined below */
 @keyframes cssload-square {
   50% {
     border-radius: 100%;
@@ -274,34 +315,34 @@
 @keyframes cssload-shadow {
   50% {
     transform: scale(0.5);
-    border-color: rgb(228,228,228);
+    border-color: rgb(228, 228, 228);
   }
 }
 
 @-o-keyframes cssload-shadow {
   50% {
     -o-transform: scale(0.5);
-    border-color: rgb(228,228,228);
+    border-color: rgb(228, 228, 228);
   }
 }
 
 @-ms-keyframes cssload-shadow {
   50% {
     -ms-transform: scale(0.5);
-    border-color: rgb(228,228,228);
+    border-color: rgb(228, 228, 228);
   }
 }
 
 @-webkit-keyframes cssload-shadow {
   50% {
     -webkit-transform: scale(0.5);
-    border-color: rgb(228,228,228);
+    border-color: rgb(228, 228, 228);
   }
 }
 
 @-moz-keyframes cssload-shadow {
   50% {
     -moz-transform: scale(0.5);
-    border-color: rgb(228,228,228);
+    border-color: rgb(228, 228, 228);
   }
 }

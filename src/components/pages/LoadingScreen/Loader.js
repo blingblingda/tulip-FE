@@ -1,8 +1,10 @@
-import React from 'react';
-import './Loader.css'; // Assuming your CSS is in a file named Loader.css
+import React from "react";
+import "./Loader.css";
 
+// The Loader component is a functional component that returns JSX.
 const Loader = () => {
   return (
+    // The main container for the loader animation
     <div className="cssload-main">
       <div className="cssload-heart">
         <span className="cssload-heartL"></span>
@@ -14,4 +16,4 @@ const Loader = () => {
   );
 };
 
-export default Loader;
+export default Loader; // Export the component for use in other parts of the application

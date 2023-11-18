@@ -6,7 +6,7 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 50%; /* This makes the thumb circular */
   cursor: pointer;
   -webkit-appearance: none; /* Override default appearance */
-  margin-top: -9px; /* You might need to adjust this depending upon the height of the slider */
+  margin-top: -9px; /* Adjust if needed */
 }
 
 input[type="range"]::-moz-range-thumb {
@@ -29,7 +29,7 @@ input[type="range"]::-ms-thumb {
 /* For the track (background) */
 input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
-  height: 2px; /* Adjust the height for the thickness of the line */
+  height: 2px; /* Adjust if needed */
   cursor: pointer;
   background: black;
   border-radius: 1.3px;

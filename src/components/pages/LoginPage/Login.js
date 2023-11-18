@@ -6,12 +6,14 @@ import Loader from "../LoadingScreen/Loader";
 import { checkUserInfo } from "../../services/AuthenticationService";
 
 export const Login = () => {
+  // State hooks for form fields and control states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Update state based on form input changes
   const handleLogin = (e) => {
     const { id, value } = e.target;
     if (id === "email") {
@@ -21,19 +23,21 @@ export const Login = () => {
     }
   };
 
+  // Handle form submission for login
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
+    e.preventDefault(); // Prevent default form submission behavior
+    setLoading(true); // Show loading indicator
+    setError(""); // Reset previous errors
 
     try {
+      // Simulate API call to check user info
       const response = await checkUserInfo(email, password);
 
       // Wait for 1.5 seconds to simulate the loading process
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       if (!response.ok) {
-        throw new Error("Invalid username or password");
+        throw new Error("Invalid username or password"); // Handle non-200 responses
       }
 
       const data = await response.json();
