@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../UI/Button.css";
 
 export const PassionsModal = ({ onPassionsChange }) => {
   const [isModalOpen, setModalOpen] = useState(false);
