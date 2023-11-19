@@ -81,6 +81,7 @@ const validateForm = ({
   return { isValid: true, message: "" };
 };
 
+// Component for handling user registration
 export const RegistrationPage = () => {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
@@ -96,10 +97,12 @@ export const RegistrationPage = () => {
   const [formError, setFormError] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
   const [bioContent, setBioContent] = useState("");
+  // Constants for backend communication
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const BACKEND_URL = "https://tulip-back-end.onrender.com";
 
+  // Handler functions
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     if (id === "firstName") {
@@ -142,6 +145,7 @@ export const RegistrationPage = () => {
     setBioContent(e.target.value);
   };
 
+  // Form submission handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Trim input values to remove leading/trailing spaces
@@ -149,6 +153,7 @@ export const RegistrationPage = () => {
     const trimmedLastName = lastName.trim();
     const trimmedCity = city.trim();
 
+    // Validation logic moved to a separate utility function
     const validationResult = validateForm({
       firstName: trimmedFirstName,
       lastName: trimmedLastName,
@@ -164,13 +169,16 @@ export const RegistrationPage = () => {
       bioContent,
     });
 
+    // Handle validation result
     if (!validationResult.isValid) {
       setFormError(validationResult.message);
     } else {
+      // Reset error message
       setFormError("");
 
       const passionLabels = selectedPassions.map((passion) => passion.label);
 
+      // Construct user info object for API call
       const userInfo = {
         name: trimmedFirstName,
         // trimmedLastName,
@@ -196,6 +204,7 @@ export const RegistrationPage = () => {
       })
         .then((res) => res.json())
         .then((data) => {
+          // Success handling
           navigate("/match");
         })
         .catch((err) => {
@@ -220,21 +229,6 @@ export const RegistrationPage = () => {
     setPhotoUrl("");
     setBioContent("");
   };
-
-  // if (file) {
-  //   if (file.type.startsWith("image/")) {
-  //     if (file.size <= 5 * 1024 * 1024) {
-  //       console.log("File selected and within size limit");
-  //       // console.log(file);
-  //     } else {
-  //       console.log("File size exceeds the limit (5MB)");
-  //       alert("File size exceeds the limit (5MB)");
-  //     }
-  //   } else {
-  //     console.log("Selected file is not an image");
-  //     alert("Selected file is not an image");
-  //   }
-  // }
 
   return (
     <div>
@@ -453,7 +447,6 @@ export const RegistrationPage = () => {
             <h2 className="text-lg font-semibold leading-7 text-gray-900 dark:text-gray-400">
               Show me
             </h2>
-
             <div className="mt-10 space-y-10">
               {/* Preferences */}
               <fieldset>
@@ -461,6 +454,7 @@ export const RegistrationPage = () => {
                   Preferences
                 </legend>
                 <div className="mt-6 space-y-6">
+                  {/* Male option */}
                   <div className="flex items-center gap-x-3">
                     <input
                       id="Male"
@@ -478,6 +472,7 @@ export const RegistrationPage = () => {
                       Male
                     </label>
                   </div>
+                  {/* Female option */}
                   <div className="flex items-center gap-x-3">
                     <input
                       id="Female"
@@ -495,6 +490,7 @@ export const RegistrationPage = () => {
                       Female
                     </label>
                   </div>
+                  {/* Others option */}
                   <div className="flex items-center gap-x-3">
                     <input
                       id="Others"
@@ -509,7 +505,25 @@ export const RegistrationPage = () => {
                       htmlFor="Others"
                       className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400"
                     >
-                      Others
+                      Other
+                    </label>
+                  </div>
+                  {/* All option */}
+                  <div className="flex items-center gap-x-3">
+                    <input
+                      id="All"
+                      name="show-me"
+                      type="radio"
+                      value={"All"}
+                      checked={genderPrefer === "All"}
+                      onChange={handleGenderPreferChange}
+                      className="h-4 w-4 border-gray-300 text-primary-800 focus:ring-primary-800"
+                    />
+                    <label
+                      htmlFor="All"
+                      className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400"
+                    >
+                      All
                     </label>
                   </div>
                 </div>

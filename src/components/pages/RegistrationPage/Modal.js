@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 
 export const PassionsModal = ({ onPassionsChange }) => {
+  // State for managing modal visibility
   const [isModalOpen, setModalOpen] = useState(false);
+  // State for managing currently selected passions
   const [selectedPassions, setSelectedPassions] = useState([]);
+  // State for saving selected passions before closing the modal
   const [savedPassions, setSavedPassions] = useState([]);
 
+  // Predefined list of passions
   const passions = [
     { label: "Traveling", emoji: "✈️" },
     { label: "Cooking", emoji: "🍳" },
@@ -28,24 +32,30 @@ export const PassionsModal = ({ onPassionsChange }) => {
     { label: "Board games", emoji: "🎲" },
   ];
 
+  // Function to toggle the selection state of a passion
   const togglePassion = (passion) => {
+    // Check if the passion is already selected
     if (selectedPassions.some((p) => p.label === passion.label)) {
+      // Remove the passion if it is already selected
       setSelectedPassions((prev) =>
         prev.filter((p) => p.label !== passion.label)
       );
     } else {
+      // Add the passion if it is not selected and the limit is not reached
       if (selectedPassions.length < 5) {
         setSelectedPassions((prev) => [...prev, passion]);
       } else {
+        // Notify the user if the maximum number of passions is reached
         alert("You can select a maximum of 5 passions!");
       }
     }
   };
 
+  // Function to handle saving the selected passions
   const handleSave = () => {
-    setSavedPassions(selectedPassions);
-    setModalOpen(false);
-    onPassionsChange(selectedPassions);
+    setSavedPassions(selectedPassions); // Save the current selection state
+    setModalOpen(false); // Close the modal
+    onPassionsChange(selectedPassions); // Pass the saved passions to the parent component
   };
 
   return (

@@ -4,7 +4,6 @@ import { Header } from "../../UI/Header";
 import Why1 from "../../../assets/why-1.avif";
 import Why2 from "../../../assets/why-2.webp";
 import Why3 from "../../../assets/why-3.jpeg";
-import { Button } from "../../UI/Button";
 import { Footer } from "../../UI/Footer";
 import { Accordion } from "./Accordion";
 import Download from "../../../assets/download.jpg";
@@ -14,11 +13,12 @@ import Loader from "../LoadingScreen/Loader";
 import Team from "./Team";
 
 export const HomePage = () => {
+  // State management hooks
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
   const [isLoading, setLoading] = useState(false); // Start without loading
   const navigate = useNavigate();
 
-  // Check if the user is authenticated
+  // Utility function for checking authentication
   const isAuthenticated = () => {
     return !!localStorage.getItem("token");
   };
@@ -37,7 +37,7 @@ export const HomePage = () => {
     }
   }, [navigate]);
 
-  // If the loading state is true, render the Loader component
+  // Loader to indicate page transition
   if (isLoading) {
     return <Loader />;
   }
@@ -86,7 +86,7 @@ export const HomePage = () => {
               <div className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                 <button
                   onClick={() => setLoginModalOpen(true)}
-                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
+                  className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg animate-bounce bg-primary-700 hover:bg-primary-900 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"
                 >
                   Sign Up
                   {/* Arrow icon */}
@@ -349,8 +349,6 @@ export const HomePage = () => {
         <Accordion />
         {/* Team */}
         <Team />
-
-        {/* Download */}
         {/* Download */}
         <section className="flex flex-col items-center mt-12 md:mb-40 mb-48 sm:mb-36">
           <div className="text-5xl py-10 text-center">
@@ -390,7 +388,6 @@ export const HomePage = () => {
       <section className="flex flex-col items-center my-24">
         <Footer />
       </section>
-
       <Modal show={isLoginModalOpen} onClose={() => setLoginModalOpen(false)}>
         <SignUp />
       </Modal>

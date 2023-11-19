@@ -6,13 +6,18 @@ import Loader from "../LoadingScreen/Loader";
 import { createUserInfo } from "../../services/AuthenticationService";
 
 export const SignUp = () => {
+  // State hooks for user input fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+   // State hook for any error messages
   const [error, setError] = useState("");
+  // State hook to control when the component is loading
   const [loading, setLoading] = useState(false);
+  // Hook to navigate to different routes programmatically
   const navigate = useNavigate();
 
+  // Handler for input changes, updating state based on the input field's id
   const handleRegister = (e) => {
     const { id, value } = e.target;
     if (id === "email") {
@@ -24,15 +29,18 @@ export const SignUp = () => {
     }
   };
 
+   // Utility function to validate email using regex
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
+  // Handler for form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
 
+    // Perform input validation
     if (!email) {
       setError("Email is required.");
       return;
@@ -53,26 +61,31 @@ export const SignUp = () => {
     setLoading(true); // Set loading to true only after validation passes
 
     try {
+      // Call the user creation service
       const response = await createUserInfo(email, password);
 
-      // Wait for 3 seconds to simulate the loading process
+      // Simulate a network request delay
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
       if (!response.ok) {
         throw new Error("User already exists");
       }
-
+       // Process response data
       const data = await response.json();
+      // Store the token and user ID in local storage for authentication purposes
       localStorage.setItem("token", data.token);
       localStorage.setItem("userId", data.userId);
+      // Navigate to the registration completion page
       navigate("/registration");
     } catch (err) {
       setError(err.message);
     } finally {
+      // End the loading process regardless of the outcome
       setLoading(false);
     }
   };
 
+   // Render the Loader component when loading is true
   if (loading) {
     return (
       <div className="fixed inset-0 bg-white bg-opacity-75 flex justify-center items-center">

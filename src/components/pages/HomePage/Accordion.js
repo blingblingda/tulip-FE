@@ -1,13 +1,13 @@
-
 import React, { useState } from "react";
 
 export const Accordion = (): JSX.Element => {
   const [activeElement, setActiveElement] = useState("");
-
+  // Toggles the active element
   const handleClick = (value: string) => {
     setActiveElement(value === activeElement ? "" : value);
   };
 
+  // Data for the FAQ section
   const faqData = [
     {
       question: "How Does the One Connection at a Time Feature Work?",
@@ -16,17 +16,20 @@ export const Accordion = (): JSX.Element => {
     },
     {
       question: "Is Tulip Safe to Use?",
-      answer: "Safety is our top priority. Tulip incorporates robust security features and protocols to ensure the privacy and safety of our users. We encourage a respectful and kind interaction space and have measures in place to report and block malicious users."
+      answer:
+        "Safety is our top priority. Tulip incorporates robust security features and protocols to ensure the privacy and safety of our users. We encourage a respectful and kind interaction space and have measures in place to report and block malicious users.",
     },
     {
       question: "How Do I Set Up My Profile on Tulip?",
-      answer: "Setting up your profile is simple. Download the Tulip app, follow the on-screen instructions to create an account, and fill in your profile information. You can customize your profile to showcase your personality, interests, and what you’re looking for in a connection."
+      answer:
+        "Setting up your profile is simple. Download the Tulip app, follow the on-screen instructions to create an account, and fill in your profile information. You can customize your profile to showcase your personality, interests, and what you’re looking for in a connection.",
     },
     {
       question: "What type of relationships does Tulip promote?",
-      answer: "Tulip encourages users to form serious and meaningful one-to-one relationships based on honesty and deep connection. Our platform is tailored to support individuals seeking committed partnerships and those who value authenticity and genuine interactions."
-    }
-    
+      answer:
+        "Tulip encourages users to form serious and meaningful one-to-one relationships based on honesty and deep connection. Our platform is tailored to support individuals seeking committed partnerships and those who value authenticity and genuine interactions.",
+    },
+
     // ... Add other FAQs here
   ];
 

@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+// CustomDatePicker component that allows users to select a date and calculates age based on the date selected
 export const CustomDatePicker = ({ onAgeChange }) => {
+  // State for storing the selected date
   const [startDate, setStartDate] = useState(new Date());
 
+  // Handler for date change
   const handleDateChange = (date) => {
     setStartDate(date);
     const currentYear = new Date().getFullYear();
     const birthYear = date.getFullYear();
     const age = currentYear - birthYear;
-    onAgeChange(age);
+    onAgeChange(age); // Pass the calculated age to the parent component's handler
   };
 
   // Calculate today's date minus 18 years to set as the maximum selectable date.
