@@ -27,6 +27,7 @@ export const ChatBox = ({ username }) => {
 
     // Event listener for user disconnection
     socket.on("userDisconnected", (matchId) => {
+      alert("The conversation has ended.");
       navigate("/match", { replace: true });
       // Using setTimeout to ensure navigation completes before page reloads
       setTimeout(() => {
