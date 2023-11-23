@@ -6,7 +6,7 @@ import { Footer } from "../../UI/Footer";
 import { endConversation } from "../../services/MatchService";
 import { fetchUser } from "../../services/UserService";
 
-export const ChatBox = ({ username }) => {
+export const ChatBox = ({ username, userImg, partnerImg }) => {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const token = localStorage.getItem("token");
@@ -107,7 +107,19 @@ export const ChatBox = ({ username }) => {
                       } items-center`}
                     >
                       <div className="flex items-center justify-center h-10 w-10 rounded-full bg-custom-lightpink flex-shrink-0 dark:text-black">
-                        {msg.user.charAt(0)}
+                        {msg.user === username ? (
+                          <img
+                            src={userImg}
+                            alt=""
+                            className="rounded-full h-full w-full object-cover"
+                          />
+                        ) : (
+                          <img
+                            src={partnerImg}
+                            alt=""
+                            className="rounded-full h-full w-full object-cover"
+                          />
+                        )}
                       </div>
                       <div
                         className={`relative ${

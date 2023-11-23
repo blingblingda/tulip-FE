@@ -7,7 +7,7 @@ import { Modal } from "../../UI/Modal";
 import { ChatBox } from "./ChatBox";
 import { socket } from "../../../socketConfig";
 import { fetchPotentialMatch } from "../../services/MatchService";
-import { fetchUser } from "../../services/UserService";
+import { fetchUser, fetchPartner } from "../../services/UserService";
 import Loader from "../LoadingScreen/Loader";
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +18,8 @@ export const MatchPage = () => {
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [joined, setJoined] = useState(false);
   const [userName, setUserName] = useState("");
+  const [userImg, setUserImg] = useState("");
+  const [partnerImg, setPartnerImg] = useState("");
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId");
   const navigate = useNavigate();
@@ -31,7 +33,14 @@ export const MatchPage = () => {
             matchId: userData.conversation.id,
             userName: userData.name,
           });
+          const partnerData = await fetchPartner(
+            userData.conversation.id,
+            userId,
+            token
+          );
           setUserName(userData.name);
+          setUserImg(userData.photo_url);
+          setPartnerImg(partnerData.photo);
           setJoined(true);
         } else {
           const potentialMatches = await fetchPotentialMatch(userId, token);
@@ -62,7 +71,9 @@ export const MatchPage = () => {
   };
 
   if (joined) {
-    return <ChatBox username={userName} />;
+    return (
+      <ChatBox username={userName} userImg={userImg} partnerImg={partnerImg} />
+    );
   }
 
   if (loading) {

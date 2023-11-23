@@ -509,7 +509,7 @@ export const RegistrationPage = () => {
                     </label>
                   </div>
                   {/* All option */}
-                  <div className="flex items-center gap-x-3">
+                  {/* <div className="flex items-center gap-x-3">
                     <input
                       id="All"
                       name="show-me"
@@ -525,7 +525,7 @@ export const RegistrationPage = () => {
                     >
                       All
                     </label>
-                  </div>
+                  </div> */}
                 </div>
               </fieldset>
               {/* Looking for */}

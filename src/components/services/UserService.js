@@ -22,3 +22,19 @@ export const sendUserImage = async (formData) => {
   });
   return userImage.json();
 };
+
+// Function to fetch partner name and img based on conversation id
+export const fetchPartner = async (conversationId, currentUserId, token) => {
+  // Make a GET request to the getConversation API endpoint
+  const partnerProfile = await fetch(
+    `${BACKEND_URL}/api/matches/get_conversation/${conversationId}/${currentUserId}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-auth-token": token,
+      },
+    }
+  );
+  return partnerProfile.json();
+};
