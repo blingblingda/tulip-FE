@@ -10,7 +10,7 @@ export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-   // State hook for any error messages
+  // State hook for any error messages
   const [error, setError] = useState("");
   // State hook to control when the component is loading
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,7 @@ export const SignUp = () => {
     }
   };
 
-   // Utility function to validate email using regex
+  // Utility function to validate email using regex
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -70,7 +70,7 @@ export const SignUp = () => {
       if (!response.ok) {
         throw new Error("User already exists");
       }
-       // Process response data
+      // Process response data
       const data = await response.json();
       // Store the token and user ID in local storage for authentication purposes
       localStorage.setItem("token", data.token);
@@ -85,7 +85,7 @@ export const SignUp = () => {
     }
   };
 
-   // Render the Loader component when loading is true
+  // Render the Loader component when loading is true
   if (loading) {
     return (
       <div className="fixed inset-0 bg-white bg-opacity-75 flex justify-center items-center">
@@ -142,7 +142,7 @@ export const SignUp = () => {
                   value={password}
                   onChange={handleRegister}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="••••••••"
+                  placeholder="At least 8 digits"
                   required
                 />
               </div>
@@ -160,7 +160,7 @@ export const SignUp = () => {
                   value={confirmPassword}
                   onChange={handleRegister}
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="••••••••"
+                  placeholder="At least 8 digits"
                   required
                 />
               </div>
