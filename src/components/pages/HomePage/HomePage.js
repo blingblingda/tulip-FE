@@ -137,7 +137,7 @@ export const HomePage = () => {
                 {/* YouTube Logo with text */}
                 <div className="mr-5 mb-5 lg:mb-0 flex items-center hover:text-gray-800 dark:hover:text-white">
                   <a
-                    href="https://www.youtube.com/@holbertonschoolaustralia"
+                    href="https://www.youtube.com/watch?v=ujILCaT4COA"
                     className="flex items-center"
                   >
                     <svg

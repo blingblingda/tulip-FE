@@ -119,7 +119,7 @@ const TeamSection = () => {
         { network: "github", href: "https://github.com/blingblingda" },
         {
           network: "portfolio",
-          href: "https://blingblingda.github.io/react-resume-belinda/",
+          href: "https://belinda-shan.onrender.com/",
         },
       ],
     },
