@@ -1,3 +1,5 @@
 https://tulip-fe.onrender.com
+http://tulip-fe.s3-website-ap-southeast-2.amazonaws.com
+https://tulip-fe.s3-website-ap-southeast-2.amazonaws.com
 https://tulip-back-end.onrender.com
 https://tulip-back-end-socketio.onrender.com
